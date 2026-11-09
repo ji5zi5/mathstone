@@ -5,6 +5,7 @@ const square=x=>`<msup><mi>${x}</mi><mn>2</mn></msup>`;
 const floor=x=>`<mo>⌊</mo><mrow>${x}</mrow><mo>⌋</mo>`;
 const root=x=>`<msqrt>${x}</msqrt>`;
 const data={
+  square:{label:'뒤러의 마방진',equation:'<mtable>'+[[16,3,2,13],[5,10,11,8],[9,6,7,12],[4,15,14,1]].map(row=>'<mtr>'+row.map(n=>`<mtd><mn>${n}</mn></mtd>`).join('')+'</mtr>').join('')+'</mtable>',legend:'가로·세로·대각선 합은 34. 내 턴마다 다음 행의 공격력으로 바뀝니다.'},
   surge:{text:'아군 함수의 기울기만큼\n이번 턴 공격력을 더합니다.\n함수와 x는 유지됩니다.',label:'현재 기울기',equation:'<msup><mi>f</mi><mo>′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo>',legend:'현재 입력에서 도함수를 계산합니다. 증가량은 0~9999로 제한하고 내립니다.'},
   sword:{text:'공격력 = 아군 함수의 구분구적합\n공격할 때마다 분할 1 → 2 → 4\n함수가 없으면 공격력 4.',label:'오른쪽 직사각형 합',equation:'<mi>Σ</mi><mi>f</mi><mo>(</mo><mi>iΔx</mi><mo>)</mo><mo>·</mo><mi>Δx</mi>',legend:'가장 왼쪽 아군 함수의 [0,x]를 등분합니다. Δx=x/n. 각 구간 오른쪽 끝의 높이×너비를 합합니다.'},
   sandwich:{text:'양끝 아군 공격력 사이로\n적 하나를 가둡니다.\n적의 턴마다 평균을 향해 조입니다.',label:'압착 경계',equation:'<mi>L</mi><mo>≤</mo><mi>A</mi><mo>≤</mo><mi>U</mi>',legend:'아군 둘 필요. 최초 양끝 값의 평균을 내린 값으로 상·하한이 수렴합니다.'},
@@ -47,6 +48,11 @@ export function mathPanel(c){
 
 function mechanicState(c){
   let html='';
+  if(c.identityState&&!c.silenced)html+=`<p class="math-panel-label">${escape(c.identityState.label||'수학 상태')}</p><p class="mechanic-value">${escape(c.identityState.detail||'')}</p>`;
+  if(c.undecidable&&!c.silenced)html+=`<p class="mechanic-value">${c.attack===c.hp?'A = H · 공격 불가':'A ≠ H · 주문 대상 불가'}</p>`;
+  if(c.rotation)html+=`<p class="mechanic-value">좌표 (${escape(c.rotation.x)}, ${escape(c.rotation.y)}) · ${escape(c.rotation.turn*90)}°</p>`;
+  if(c.magicSquare)html+=`<p class="mechanic-value">마방진 ${c.magicSquare.row+1}행 · ${c.magicSquare.column+1}열</p>`;
+  if(c.taxiPartner&&!c.silenced)html+=`<p>1729의 짝 ${c.taxiBonus?'연결됨 · 공격력 17':'없음'}</p>`;
   if(c.id==='ant'&&!c.silenced||c.ant){const a=c.ant||{x:0,y:0,direction:0,steps:0,black:[]},black=new Set(a.black);html+=`<p>흰 칸 ↱ · 검정 칸 ↰</p><div class="ant-grid" role="img" aria-label="${escape(a.steps)}걸음, 검정 ${black.size}칸">${Array.from({length:49},(_,i)=>{const x=a.x+i%7-3,y=a.y+Math.floor(i/7)-3;return `<i class="${black.has(`${x},${y}`)?'black':''}">${i===24?['↑','→','↓','←'][a.direction]:''}</i>`;}).join('')}</div><p>${escape(a.steps)}걸음 · 검정 ${black.size}칸<br>위치 (${escape(a.x)}, ${escape(a.y)}) · 주변 7×7 표시</p>`;}
   if(c.squeeze)html+=`<p class="mechanic-value">${escape(c.squeeze.low)} ≤ 공격력 ≤ ${escape(c.squeeze.high)}</p><p>수렴값 ${escape(c.squeeze.limit)}</p>`;
   if(c.constantStorage)html+=`<p class="mechanic-value">보관 중: C = ${escape(c.constantStorage.value)}</p>`;

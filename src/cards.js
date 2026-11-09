@@ -2,6 +2,7 @@ import {EXPANSION} from './expansion.js';
 import {ARCHIVE} from './archive.js';
 import {MATHEMATICIANS} from './mathematicians.js';
 import {OPERATORS} from './operators.js';
+import {IDENTITY_REWORK} from './identity-cards.js';
 // Rules text is intentionally game fiction; mathematical inspiration is separate.
 const rows = [
   ['rabbit','피보나치의 토끼',2,2,3,'내 턴 종료: 1/1 토끼를 소환합니다. 이 하수인의 발동 횟수에 따라 1, 1, 2, 3, 5…마리씩 소환합니다.','집주인은 덧셈을 했다. 토끼는 피보나치를 했다.','생성'],
@@ -107,6 +108,7 @@ const rows = [
 ];
 export const CARDS = rows.map(([id,name,cost,attack,health,text,flavor,school,target],art) => ({id,name,cost,attack,health,text,flavor,school,target:target || null,art,type:health ? 'minion':'spell'}));
 CARDS.push(...EXPANSION,...ARCHIVE,...MATHEMATICIANS,...OPERATORS);
+for(const c of CARDS)if(IDENTITY_REWORK[c.id])Object.assign(c,IDENTITY_REWORK[c.id]);
 Object.assign(CARDS.find(c=>c.id==='sword'),{type:'weapon',attack:4,durability:3});
 for(const id of ['sandwich','discriminant'])CARDS.find(c=>c.id===id).requiresFriendly=2;
 CARDS.find(c=>c.id==='voronoi').requiresFriendly=1;

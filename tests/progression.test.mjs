@@ -29,5 +29,5 @@ test('draft offers persist and thirty choices make a legal hero-compatible deck'
  assert.equal(p.arena.ids.length,30);assert.ok(validateDeck(p.arena.ids,'leibniz'));assert.deepEqual(p.arena.options,[]);assert.equal(draftCard(p,0),false);
 });
 test('brawl gives ordinary minions functions and advances inputs by two',()=>{
- const s=createGame(deckFor(9),10,deckFor(5),{first:0,mode:'brawl'});mulligan(s);s.players[0].board=[];const m=summon(s,0,'cat');assert.deepEqual(m.formula,[{n:1,d:1,p:2}]);assert.equal(m.attack,1);endTurn(s,0);endTurn(s,1);assert.equal(m.functionX,3);assert.equal(m.attack,9);
+ const s=createGame(deckFor(9),10,deckFor(5),{first:0,mode:'brawl'});mulligan(s);s.players[0].board=[];const m=summon(s,0,'fly');assert.deepEqual(m.formula,[{n:1,d:1,p:2}]);assert.equal(m.attack,1);endTurn(s,0);endTurn(s,1);assert.equal(m.functionX,3);assert.equal(m.attack,9);
 });

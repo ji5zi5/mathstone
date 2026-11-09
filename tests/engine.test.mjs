@@ -33,7 +33,7 @@ test('Fibonacci spawns 1, 1, 2, 3, 5; newborns do not recursively reproduce',()=
   const s=setup(),r=summon(s,0,'rabbit');for(const n of [1,1,2,3,5]){s.current=0;s.players[0].board=[r];endTurn(s,0);assert.equal(s.players[0].board.length-1,n);}
 });
 test('taunt, summoning sickness, shield and damage caps',()=>{
-  const s=setup(),attacker=summon(s,0,'golem',{asleep:false,shield:false}),guard=summon(s,1,'turtle');assert.equal(attack(s,0,attacker.uid,'hero1'),false);assert.equal(attack(s,0,attacker.uid,guard.uid),true);assert.equal(guard.hp,2);assert.equal(canAttack(s,0,attacker.uid),false);
+  const s=setup(),attacker=summon(s,0,'golem',{asleep:false,shield:false}),guard=summon(s,1,'turtle');assert.equal(attack(s,0,attacker.uid,'hero1'),false);assert.equal(attack(s,0,attacker.uid,guard.uid),true);assert.equal(guard.hp,4);assert.equal(canAttack(s,0,attacker.uid),false);
   const shield=summon(s,1,'snail');damage(s,shield.uid,100);assert.equal(shield.hp,5);assert.equal(shield.shield,false);
   const monster=summon(s,1,'monster');damage(s,monster.uid,100);assert.equal(monster.hp,6);
   const sleepy=summon(s,0,'rabbit');assert.equal(canAttack(s,0,sleepy.uid),false);

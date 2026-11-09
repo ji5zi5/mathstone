@@ -45,9 +45,9 @@ test('circle power uses the actual minion count and ignores locations',()=>{
   const t=game(),m=summon(t,1,'token',{attack:6,hp:9,maxHp:9});assert.ok(usePower(t,0,m.uid));assert.deepEqual([m.attack,m.hp],[3,3]);
 });
 test('position controls adjacency and invalid positions never spend a card',()=>{
-  const s=game(),left=summon(s,0,'cat'),right=summon(s,0,'cat'),c=give(s,'pascaltriangle');
+  const s=game(),left=summon(s,0,'token',{attack:4}),right=summon(s,0,'token',{attack:4}),c=give(s,'pascaltriangle');
   for(const invalid of [-1,3,1.5]){const old=structuredClone(s);assert.equal(play(s,0,c.uid,null,invalid),false);assert.deepEqual(s,old);}
-  assert.ok(play(s,0,c.uid,null,1));assert.deepEqual(s.players[0].board.map(m=>m.id),['cat','pascaltriangle','cat']);
+  assert.ok(play(s,0,c.uid,null,1));assert.deepEqual(s.players[0].board.map(m=>m.id),['token','pascaltriangle','token']);
   endTurn(s,0);assert.equal(left.attack,4);assert.equal(right.attack,4);assert.equal(s.players[0].board[1].attack,8);
 });
 test('targeted copy is inserted at the chosen position and preserves copied behavior',()=>{

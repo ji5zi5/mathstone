@@ -16,8 +16,8 @@ test('Monty doors resolve both decisions and survive a saved JSON round trip',()
   for(const index of [0,1]){let s=game();cast(s,'dilemma');s.choice.prize=0;assert.ok(choose(s,0,0));s=JSON.parse(JSON.stringify(s));assert.ok(choose(s,0,index));assert.equal(s.players[0].board[0].hp,index===0?7:3);}
 });
 test('counter secret is unique, triggers only against opponent, spends the countered card and hides its identity',()=>{
-  const s=game();cast(s,'counterexample');assert.equal(canPlay(s,0,give(s,'counterexample')),false);cast(s,'crown');assert.equal(s.players[0].secrets.length,1);
-  s.current=1;const armor=s.players[1].armor;cast(s,'crown');assert.equal(s.players[1].armor,armor);assert.equal(s.players[0].secrets.length,0);
+  const s=game();cast(s,'counterexample');assert.equal(canPlay(s,0,give(s,'counterexample')),false);assert.ok(cast(s,'polygon'));assert.equal(s.players[0].secrets.length,1);
+  s.current=1;const armor=s.players[1].armor;assert.ok(cast(s,'polygon'));assert.equal(s.players[1].armor,armor);assert.equal(s.players[0].secrets.length,0);
   cast(s,'ambush');assert.equal(s.log.at(-1).text,'상대 → 비밀');
 });
 test('attack secret kills the attacker before combat, including deathrattles',()=>{
@@ -52,15 +52,15 @@ test('lifesteal works on damage including retaliation and weapons have independe
   cast(s,'razor');const e=summon(s,1,'cat');attack(s,0,'hero0','hero1');assert.equal(s.players[0].hp,16);assert.equal(e.hp,3);s.current=1;cast(s,'rust');assert.equal(s.players[0].weapon,null);
 });
 test('spell power buffs damage instances but not deathrattles or hero powers',()=>{
-  const s=game();summon(s,0,'token',{spellDamage:2});assert.ok(cast(s,'quaternion','hero1'));assert.equal(s.players[1].hp,24);s.players[0].hero='leibniz';const f=summon(s,0,'marginscribe');assert.ok(usePower(s,0,f.uid));assert.equal(f.attack,3);assert.equal(s.players[1].hp,24);
-  const r=summon(s,0,'remainder');cast(s,'cut',r.uid);assert.equal(s.players[1].hp,20);
+  const s=game();summon(s,0,'token',{spellDamage:2});assert.ok(cast(s,'freeze','hero1'));assert.equal(s.players[1].hp,26);s.players[0].hero='leibniz';const f=summon(s,0,'marginscribe');assert.ok(usePower(s,0,f.uid));assert.equal(f.attack,3);assert.equal(s.players[1].hp,26);
+  const r=summon(s,0,'remainder');cast(s,'cut',r.uid);assert.equal(s.players[1].hp,22);
 });
 test('freeze skips next attack turn then thaws; temporary attack and aura expire independently',()=>{
   const s=game(),m=summon(s,1,'doubleblade',{asleep:false});cast(s,'freeze',m.uid);endTurn(s,0);assert.equal(canAttack(s,1,m.uid),false);endTurn(s,1);endTurn(s,0);assert.ok(canAttack(s,1,m.uid));
   const t=game(),c=summon(t,0,'bridgekeeper'),choir=summon(t,0,'choir');assert.equal(c.attack,2);assert.ok(cast(t,'surge',c.uid));assert.equal(c.attack,4);endTurn(t,0);assert.equal(c.attack,2);damage(t,choir.uid,99);settle(t);assert.equal(c.attack,1);
 });
 test('quest counts subsequent spells only and hero replacement changes power',()=>{
-  const s=game();cast(s,'proofquest');assert.equal(s.players[0].quest.progress,0);for(let i=0;i<3;i++)cast(s,'crown');assert.equal(s.players[0].quest,null);assert.ok(s.players[0].board.some(m=>m.attack===8&&m.taunt));
+  const s=game();cast(s,'proofquest');assert.equal(s.players[0].quest.progress,0);for(let i=0;i<3;i++)assert.ok(cast(s,'polygon'));assert.equal(s.players[0].quest,null);assert.ok(s.players[0].board.some(m=>m.attack===8&&m.taunt));
   cast(s,'eulerhero');assert.equal(heroOf(s.players[0]).power,'등식');const m=summon(s,1,'token',{attack:2,hp:8,maxHp:8});assert.ok(usePower(s,0,m.uid));assert.deepEqual([m.attack,m.hp],[5,5]);assert.equal(s.players[1].hp,30);
 });
 test('setting attack replaces a temporary increase without producing negative attack at turn end',()=>{

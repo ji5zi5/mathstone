@@ -35,6 +35,10 @@ export function refreshAuras(s){
     const amount=minions(s,p).filter(x=>x!==m&&x.hp>0&&!x.silenced&&x.ability==='choir').length;
     m.attack+=amount-(m.auraAttack||0);m.auraAttack=amount;
   }
+  for(const pl of s.players)for(const m of pl.board)if(m.taxiPartner&&!m.silenced){
+    const linked=pl.board.some(x=>x.uid===m.taxiPartner&&x.hp>0);
+    m.taxiBonus=linked?17-m.taxiBase:0;setAttack(m,linked?17:m.taxiBase);
+  }
   for(const change of refreshRelations(s))emit(s,{kind:'math',...change});
   for(const pl of s.players){
     const sites=pl.board.filter(m=>m.territorySite&&!m.silenced&&m.hp>0),cells=voronoiCells(sites.map(m=>m.attack));
@@ -73,10 +77,10 @@ export function damage(s,key,amount,source=null) {
   const before=e.hp+(t.hero?e.armor:0);
   if(t.hero){const blocked=Math.min(e.armor,amount);e.armor-=blocked;e.hp-=amount-blocked;}
   else if(e.shield){e.shield=false;emit(s,{kind:'shield',key});return;}
-  else {if(!e.silenced&&e.ability==='monster')amount=Math.min(1,amount);if(!e.silenced&&e.ability==='invariant')amount=Math.min(2,amount);if(!e.silenced&&e.ability==='turtle')amount=Math.ceil(amount/2);e.hp-=amount;}
+  else {if(!e.silenced&&e.ability==='monster')amount=Math.min(1,amount);if(!e.silenced&&e.ability==='invariant')amount=Math.min(2,amount);if(!e.silenced&&e.ability==='turtle'&&source)amount=Math.min(amount,Math.floor(e.hp/2));e.hp-=amount;}
   const dealt=before-e.hp-(t.hero?e.armor:0);emit(s,{kind:'damage',key,amount:dealt});
   log(s,`${t.hero?(t.p?'상대 영웅':'내 영웅'):e.name}: 피해 ${dealt}`,'damage');
-  if(source?.poisonous&&!t.hero)e.hp=0;
+  if(source?.poisonous&&!t.hero&&dealt>0)e.hp=0;
   if(source?.lifesteal)heal(s,`hero${source.p}`,dealt);
 }
 function addHand(s,p,id,cost) {if(s.players[p].hand.length<10){const c=card(s,id,cost);s.players[p].hand.push(c);return c;} log(s,`${BY_ID[id].name}: 손패 초과로 소멸`);return null;}
@@ -124,6 +128,8 @@ function silence(m){
   m.silenced=true;for(const key of KEYWORD_KEYS)m[key]=false;m.ability=null;m.tempAttack=0;m.auraAttack=0;m.frozenUntil=null;
   m.formula=null;m.visitedTargets=[];delete m.relation;delete m.attackEquation;
   delete m.squeeze;delete m.ant;delete m.constantStorage;delete m.territorySite;delete m.territoryCells;delete m.frequency;
+  delete m.identityState;delete m.undecidable;delete m.rotation;delete m.magicSquare;
+  delete m.taxiPartner;delete m.taxiBase;delete m.taxiBonus;
 }
 function startTurn(s,p) {
   s.current=p;s.turn++;const pl=s.players[p];pl.maxMana=Math.min(10,pl.maxMana+1);pl.mana=pl.maxMana;pl.temporaryMana=0;pl.heroAttacked=false;pl.powerUsed=false;
@@ -133,10 +139,9 @@ function startTurn(s,p) {
   for(const m of [...pl.board])if(!m.silenced){
     if(m.squeeze){const b=m.squeeze;b.low=Math.ceil((b.low+b.limit)/2);b.high=Math.floor((b.high+b.limit)/2);}
     if(m.formula)updateFormula(m,m.formula,m.functionX+(s.mode==='brawl'?2:1));
+    if(m.magicSquare){m.magicSquare.row=(m.magicSquare.row+1)%4;setAttack(m,[[16,3,2,13],[5,10,11,8],[9,6,7,12],[4,15,14,1]][m.magicSquare.row][m.magicSquare.column]);}
     if(m.ability==='demon'){draw(s,p);draw(s,p);}
-    if(m.ability==='snail')m.attack+=2;
     if(m.ability==='fixedpoint')m.hp=m.maxHp;
-    if(m.ability==='turing')draw(s,p,2);
     if(m.ability==='cicada'&&++m.step===2)buff(m,7,7);
     if(m.hp>0)runEffects(s,p,BY_ID[m.ability]?.onStart,{source:m});
   }
@@ -168,7 +173,7 @@ export function usePower(s,p,key=null){
   pl.mana-=h.cost;pl.powerUsed=true;
   const m=findTarget(s,key)?.entity;
   if(h.id==='euclid')mathEffect(s,p,{rule:'gcd'},{},[m]);
-  if(h.id==='leibniz'){if(m.formula)updateFormula(m,transformFormula(m.formula,'differentiate'));else setAttack(m,0);}
+  if(h.id==='leibniz')mathEffect(s,p,{rule:'differentiate'},{},[m]);
   if(h.id==='euler'){const n=Math.floor((m.attack+m.hp)/2);setAttack(m,n);m.hp=m.maxHp=n;}
   if(h.id==='archimedes')pl.armor+=Math.floor(Math.PI*minions(s,p).length**2);
   log(s,`${h.name} → ${h.power}`,'power');settle(s);return true;
@@ -181,10 +186,11 @@ export function targetsFor(s,p,c) {
     if(['friendly','function'].includes(type)&&side!==p)continue;
     if((type==='enemy'||type==='enemyCharacter')&&side===p)continue;
     if(type==='enemyCharacter')result.push(`hero${side}`);
-    result.push(...minions(s,side).filter(m=>(side===p||!m.stealth)&&(type!=='function'||m.formula&&validFormula(transformFormula(m.formula,definition.effects?.[0]?.rule)))).map(m=>m.uid));
+    result.push(...minions(s,side).filter(m=>(side===p||!m.stealth)&&(type!=='function'||m.formula&&validFormula(transformFormula(m.formula,definition.effects?.[0]?.rule))||definition.effects?.[0]?.rule==='differentiate'&&m.ability==='monster'&&!m.silenced)).map(m=>m.uid));
   }
   return result.filter(key=>{
     const m=findTarget(s,key)?.entity,rule=definition.effects?.[0]?.rule;
+    if(definition.type==='spell'&&m.undecidable&&m.attack!==m.hp)return false;
     if(c.id==='ghost')return m.formula?.some(t=>t.p===0&&t.n>0&&t.d===1);
     if(c.id==='discriminant'){
       const [a,b]=minions(s,p);if(!a||!b||a.attack<=0)return false;
@@ -203,7 +209,6 @@ export function canPlay(s,p,c) {
   if(['minion','location'].includes(def.type)&&s.players[p].board.length>=capacity(s,p))return false;
   if(def.secret&&((s.players[p].secrets||[]).length>=5||(s.players[p].secrets||[]).includes(c.id)))return false;
   if(def.quest&&s.players[p].quest)return false;
-  if(c.id==='bottle'&&s.players[p].board.length>=capacity(s,p))return false;
   if(c.id==='diagonal'&&!s.players[1-p].hand.length)return false;
   if(c.id==='hanoi'&&s.players[p].hanoi)return false;
   return def.type==='location'||!def.target||targetsFor(s,p,c).length>0;
@@ -234,7 +239,84 @@ function effectTargets(s,p,e,{source,key}){
 }
 function mathEffect(s,p,e,context,entities){
   const me=s.players[p],source=context.source||{},own=minions(s,p).filter(m=>m.hp>0);
+  const enemy=minions(s,1-p).filter(m=>m.hp>0);
+  const trace=(label,detail)=>{
+    if(source.uid)source.identityState={...source.identityState,label,detail};
+    emit(s,{kind:'math',key:source.uid??`hero${p}`,expression:detail});
+    log(s,`${label}: ${detail}`,'math');
+  };
   switch(e.rule){
+    case 'maxwell':{
+      const hot=enemy.filter(m=>!m.relation&&!m.taxiPartner&&m.attack>(m.auraAttack||0)).sort((a,b)=>b.attack-a.attack)[0],cold=own.filter(m=>!m.relation&&!m.taxiPartner).sort((a,b)=>a.attack-b.attack)[0];
+      if(hot&&cold){hot.attack--;cold.attack++;trace('분자 선별',`${hot.name} → ${cold.name}: 1`);}break;
+    }
+    case 'catMap':{
+      const a=source.attack,h=source.hp,x=(a+h)%11,y=(a+2*h)%11;
+      setAttack(source,x);source.hp=source.maxHp=y||11;trace('고양이 사상',`(${a},${h}) → (${x},${y}) mod 11`);break;
+    }
+    case 'limacon':{const n=source.identityState?.phase??0;setAttack(source,[5,3,1,3][n]);trace('리마송',`θ=${n*90}° · r=${source.attack}`);source.identityState.phase=(n+1)%4;break;}
+    case 'agnesi':{const center=Math.floor((enemy.length-1)/2);enemy.forEach((m,i)=>damage(s,m.uid,Math.floor(8/(1+(i-center)**2))));trace('아녜시 곡선','중앙 8 · 거리 1: 4 · 거리 2: 1');break;}
+    case 'mersenne':{const n=Math.min(13,(source.identityState?.exponent||0)+1);setAttack(source,2**n-1);trace('메르센 수',`2^${n} − 1 = ${2**n-1}`);source.identityState.exponent=n;break;}
+    case 'gabriel':{
+      const length=Math.min(2**30,(source.identityState?.length||1)*2),volume=Math.floor(Math.PI*(1-1/length)),surface=Math.floor(2*Math.PI*Math.log(length));
+      me.armor+=volume;characters(s,1-p).forEach(k=>damage(s,k,surface));trace('가브리엘의 뿔',`L=${length} · 부피 ${volume} · 표면 하한 ${surface}`);source.identityState.length=length;break;
+    }
+    case 'klein':{
+      const other=s.players[1-p],left=me.board.filter(m=>m.type==='location'),right=other.board.filter(m=>m.type==='location');
+      // Swap only as many as both destinations can hold; stranded pieces stay on their original side.
+      let a=Math.min(own.length,13-right.length),b=Math.min(enemy.length,13-left.length);
+      while(left.length+own.length-a+b>13||right.length+enemy.length-b+a>13){if(left.length+own.length-a+b>13)b--;else a--;}
+      const moveA=own.slice(0,a),moveB=enemy.slice(0,b);
+      me.board=[...me.board.filter(m=>!moveA.includes(m)),...moveB];other.board=[...other.board.filter(m=>!moveB.includes(m)),...moveA];
+      for(const m of [...moveA,...moveB]){m.asleep=true;m.attacks=0;m.visitedTargets=[];}
+      trace('안팎 전환',`아군 ${a} ↔ 적 ${b}`);break;
+    }
+    case 'napier':for(const m of entities){const product=BigInt(Math.floor(m.attack))*BigInt(Math.floor(m.hp)),n=String(product).split('').reduce((sum,d)=>sum+Number(d),0);m.attack+=n;trace('자릿수 곱셈',`${product} → 자릿수 합 ${n}`);}break;
+    case 'buffon':{let hits=0;for(let i=0;i<12;i++){const theta=random(s)*Math.PI,d=random(s)/2;if(d<=Math.sin(theta)/2)hits++;}damage(s,context.key,hits);trace('뷔퐁의 바늘',`12개 중 ${hits}개 교차`);break;}
+    case 'tentMap':own.forEach(m=>{const t=2*m.attack%20;setAttack(m,Math.min(t,20-t));});trace('늘이기와 접기','A → min(2A mod 20, 20−(2A mod 20))');break;
+    case 'buoyancy':for(const m of entities){const missing=m.maxHp-m.hp;me.armor+=m.hp;setAttack(m,Math.max(0,m.attack-missing));trace('부력',`배제량 ${m.hp} · 빈 부피 ${missing}`);}break;
+    case 'taxicabPair':{
+      const a=token(s,p,'1729 · 1³+12³',1,12,{art:31}),b=token(s,p,'1729 · 9³+10³',9,10,{art:31});
+      if(a&&b){a.taxiPartner=b.uid;b.taxiPartner=a.uid;a.taxiBase=1;b.taxiBase=9;}trace('택시수','1³+12³ = 9³+10³ = 1729');break;
+    }
+    case 'goldbach':{
+      const n=Math.floor(entities[0]?.attack||0);let found=0;
+      if(n>9999){trace('소수 분해','탐색 범위: 공격력 9999 이하');break;}
+      for(let a=2;a<=Math.min(n/2,9999);a++)if(isPrime(a)&&isPrime(n-a)){token(s,p,`소수 ${a}`,a,a,{art:32});token(s,p,`소수 ${n-a}`,n-a,n-a,{art:32});trace('소수 분해',`${n} = ${a} + ${n-a}`);found=1;break;}
+      if(!found)trace('소수 분해',`${n}: 소수쌍 없음`);break;
+    }
+    case 'magicSquare':own.slice(0,4).forEach((m,i)=>{m.magicSquare={row:0,column:i};setAttack(m,[16,3,2,13][i]);});trace('마방진','16+3+2+13 = 5+10+11+8 = 34');break;
+    case 'quaternion':for(const m of entities){const x=m.attack*(Math.sign(m.rotation?.x)||1),y=m.hp*(Math.sign(m.rotation?.y)||1);m.rotation={x:-y,y:x,turn:((m.rotation?.turn||0)+1)%4};setAttack(m,Math.abs(y));m.hp=m.maxHp=Math.abs(x);trace('사원수 회전',`(${x},${y}) → (${-y},${x})`);}break;
+    case 'undecidable':entities.forEach(m=>m.undecidable=true);trace('미결정 명제','A=H: 공격 불가 · A≠H: 주문 대상 불가');break;
+    case 'lorenz':{
+      let {x=1,y=1,z=1}=source.identityState||{};
+      for(let i=0;i<10;i++){const dx=10*(y-x),dy=x*(28-z)-y,dz=x*y-8*z/3;x+=dx*.01;y+=dy*.01;z+=dz*.01;}
+      const n=Math.min(99,Math.floor(Math.abs(z))),target=x<0?enemy[0]:enemy.at(-1);
+      damage(s,target?.uid??`hero${1-p}`,n);trace('로렌츠 궤도',`(${x.toFixed(2)},${y.toFixed(2)},${z.toFixed(2)}) → 피해 ${n}`);Object.assign(source.identityState,{x,y,z});break;
+    }
+    case 'pigeonhole':{const counts=[0,0],groups=own.map(m=>m.attack%2);groups.forEach(i=>counts[i]++);own.forEach((m,i)=>m.attack+=counts[groups[i]]);trace('두 비둘기집',`짝수 ${counts[0]} · 홀수 ${counts[1]}`);break;}
+    case 'randomWalk':{let position=source.identityState?.position||0;for(let i=0;i<4;i++)position+=random(s)<.5?-1:1;const target=[...enemy].sort((a,b)=>a.attack-b.attack)[0];if(target)damage(s,target.uid,Math.abs(position));trace('임의보행',`위치 ${position} · 피해 ${Math.abs(position)}`);source.identityState.position=position;break;}
+    case 'turingMachine':{
+      const state=source.identityState||{tape:[0,0,0,1],head:0,written:0,halted:false};if(state.halted)break;
+      if(state.tape[state.head]===0){state.tape[state.head]=1;state.head++;state.written++;}
+      else {state.halted=true;for(let i=0;i<state.written;i++)draw(s,p);}
+      source.identityState=state;trace('튜링 테이프',`${state.tape.join('')} · 헤드 ${state.head+1} · ${state.halted?'정지':'실행'}`);break;
+    }
+    case 'noetherStore':source.identityState={total:own.reduce((n,m)=>n+m.attack,0)};trace('보존량',`ΣA = ${source.identityState.total}`);break;
+    case 'noetherRestore':{const current=own.reduce((n,m)=>n+m.attack,0),total=source.identityState?.total??current;source.attack+=Math.max(0,total-current);source.identityState={...source.identityState,total};trace('보존량 복구',`ΣA ${current} → ${Math.max(current,total)}`);break;}
+    case 'normalVector':for(const m of entities){const a=m.attack,h=m.hp;setAttack(m,h);m.hp=m.maxHp=a;m.shield=false;trace('수직 벡터',`(${a},${h}) · (${-h},${a}) = 0`);}break;
+    case 'discontinuity':{const cut=new Set();for(let i=1;i<enemy.length;i++)if(Math.abs(enemy[i].attack-enemy[i-1].attack)>=4){cut.add(enemy[i]);cut.add(enemy[i-1]);}for(const m of cut)m.hp=0;trace('불연속 경계',`${cut.size}개 제거`);break;}
+    case 'bayesDiscount':{const other=s.players[1-p],n=other.hand.length,k=other.hand.filter(c=>definitionOf(c).type==='spell').length;other.revealed=true;for(const c of me.hand)if(definitionOf(c).type==='spell')c.cost-=Math.floor(c.cost*(k+1)/(n+2));trace('사후확률',`(${k}+1)/(${n}+2)`);break;}
+    case 'eulerWalk':{let previous=0;const path=enemy.map(m=>({uid:m.uid,a:m.attack}));for(const [i,m] of path.entries()){damage(s,m.uid,i===0?1:Math.abs(m.a-previous));previous=m.a;}if(path.length)damage(s,`hero${1-p}`,previous);trace('경로 순회',`${path.map(m=>m.a).join(' → ')} → 0`);break;}
+    case 'menger':for(const m of entities){setAttack(m,Math.floor(m.attack*4/3));m.hp=m.maxHp=Math.floor(m.hp*20/27);addHand(s,p,'menger');}trace('스펀지 단계','부피 ×20/27 · 경계 배율 ×4/3');break;
+    case 'koch':entities.forEach(m=>setAttack(m,Math.min(9999,Math.ceil(m.attack*4/3))));trace('코흐 분할','1/3 길이 조각 ×4');break;
+    case 'mandelbrot':{
+      let escaped=0;for(const m of enemy){const cr=(m.attack-5)/4,ci=(m.hp-5)/4;let x=0,y=0;for(let i=0;i<8;i++){[x,y]=[x*x-y*y+cr,2*x*y+ci];if(x*x+y*y>4){m.hp=0;escaped++;break;}}}
+      trace('탈출 판정',`8회 반복 · ${escaped}개 탈출`);break;
+    }
+    case 'deMorgan':enemy.filter(m=>!(m.attack<=3||m.hp<=3)).forEach(m=>m.hp=0);trace('드모르간','¬(A≤3 ∨ H≤3) = A>3 ∧ H>3');break;
+    case 'complexNorm':{const m=own[0];if(m){const n=Math.min(9999,m.attack*m.attack+m.hp*m.hp);token(s,p,'켤레곱의 실수',n,m.hp,{art:97});trace('켤레곱',`${m.attack}²+${m.hp}² = ${n}`);}break;}
+    case 'healingLimit':own.forEach(m=>m.hp=Math.floor((m.hp+m.maxHp)/2));addHand(s,p,'limit');trace('극한 회복','H → ⌊(H+Hmax)/2⌋');break;
     case 'triangleLink':case 'sumLink':{
       const i=own.indexOf(source);source.relation={kind:e.rule==='triangleLink'?'hypotenuse':'sum',inputs:[own[i-1]?.uid??null,own[i+1]?.uid??null]};break;
     }
@@ -277,7 +359,8 @@ function mathEffect(s,p,e,context,entities){
     case 'wilson':entities.forEach(m=>{if(isPrime(m.attack))m.hp=m.maxHp=1;else setAttack(m,1);});break;
     case 'martingale':me.armor=random(s)<.5?me.armor*2:0;break;
     case 'stirling':{const n=me.hand.filter(c=>definitionOf(c).type==='minion').length,discount=n?Math.max(0,Math.floor(n*Math.log(n)-n+.5*Math.log(2*Math.PI*n))):0;me.hand.filter(c=>definitionOf(c).type==='minion').forEach(c=>c.cost=Math.max(0,c.cost-discount));break;}
-    case 'differentiate':case 'integrate':case 'shift':case 'substituteSquare':entities.filter(m=>m.formula).forEach(m=>updateFormula(m,transformFormula(m.formula,e.rule)));break;
+    case 'differentiate':for(const m of entities){if(m.ability==='monster'&&!m.silenced){setAttack(m,Math.min(9999,m.attack*2));emit(s,{kind:'math',key:m.uid,expression:'미분 불가 → 굴곡 ×2'});}else if(m.formula)updateFormula(m,transformFormula(m.formula,e.rule));else setAttack(m,0);}break;
+    case 'integrate':case 'shift':case 'substituteSquare':entities.filter(m=>m.formula).forEach(m=>updateFormula(m,transformFormula(m.formula,e.rule)));break;
     case 'definiteIntegral':{const m=entities.find(m=>m.formula);if(m){const antiderivative=integrate(m.formula),value=evaluateFormula(antiderivative,m.functionX)-evaluateFormula(antiderivative,0);damage(s,`hero${1-p}`,Math.max(0,Math.floor(value+1e-9)));}break;}
     case 'ackermann':source.step=Math.min(5,(source.step||0)+1);setAttack(source,2**(source.step+3)-3);break;
     case 'sixFaces':source.step=((source.step||0)+1)%6;setAttack(source,source.step+1);source.hp=source.maxHp=6-source.step;break;
@@ -346,28 +429,18 @@ function spell(s,p,id,key,definition=BY_ID[id]) {
     case 'chain': {let current=m;for(let i=0;i<4&&current;i++){const row=minions(s,1-p),at=row.indexOf(current),chance=current.attack%2===0?.75:.25,right=random(s)<chance,next=row[(at+(right?1:row.length-1))%row.length];emit(s,{kind:'math',key:current.uid,expression:`${current.attack%2===0?'짝수':'홀수'} → ${right?'오른쪽':'왼쪽'}`});hit(current.uid,3);settle(s);if(s.phase==='over')break;current=minions(s,1-p).find(x=>x.uid===next.uid);}break;}
     case 'cut': {const pos=s.players[t.p].board.indexOf(m);m.hp=0;settle(s);token(s,t.p,'절단면',1,1,{art:17},pos);token(s,t.p,'절단면',1,1,{art:17},pos+1);break;}
     case 'sieve': for(const pl of s.players)for(const x of pl.board.filter(x=>x.type!=='location'))if(!isPrime(x.attack))x.hp=0;break;
-    case 'bottle': enemy.board=enemy.board.filter(x=>x!==m);m.asleep=true;m.attacks=0;me.board.push(m);break;
     case 'mobius': {const old=m.attack;setAttack(m,m.hp);m.hp=old;m.maxHp=old;m.shield=true;break;}
     case 'tempoCoin':temporaryMana(me,1);break;
-    case 'bones':temporaryMana(me,3);draw(s,p);break;
-    case 'needle':hit(key,3);if(random(s)<.5)hit(key,3);break;
-    case 'horseshoe':minions(s,p).forEach(x=>x.attack*=2);break;
     case 'sword':me.weapon={attack:4,durability:3};break;
     case 'sandwich':{const row=minions(s,p),a=row[0].attack,b=row.at(-1).attack;m.squeeze={low:Math.min(a,b),high:Math.max(a,b),limit:Math.floor((a+b)/2)};break;}
-    case 'crown':me.armor+=8;draw(s,p);break;
     case 'margin':for(let i=0;i<3;i++)draw(s,p,1);break;
     case 'letter':me.grave.slice(-3).forEach(x=>summon(s,p,x));break;
     case 'notebook': {const spells=CARDS.filter(c=>c.type==='spell');for(let i=0;i<3;i++){const c=spells[Math.floor(random(s)*spells.length)];addHand(s,p,c.id,Math.max(0,c.cost-2));}break;}
-    case 'taxi':token(s,p,'1729번 택시 · 앞좌석',1,7,{charge:true,art:31});token(s,p,'1729번 택시 · 뒷좌석',2,9,{charge:true,art:31});break;
-    case 'goldbach':token(s,p,'첫 번째 소수',3,3,{art:32});token(s,p,'두 번째 소수',5,5,{art:32});break;
     case 'suitcase':me.hand.forEach(c=>c.cost=Math.max(0,c.cost-1));break;
-    case 'square':minions(s,p).forEach(x=>{buff(x,2,2);x.hp=x.maxHp;});break;
     case 'epsilon':m.hp=1;m.maxHp=1;draw(s,p);break;
     case 'aleph': {const slots=capacity(s,p)-me.board.length;for(let i=0;i<slots;i++)token(s,p,'셀 수 있는 무한소',2,2,{art:36});break;}
     case 'zero':minions(s,1-p).forEach(x=>{silence(x);x.attack=0;});break;
-    case 'quaternion':hit(key,4);token(s,p,'사원수의 허수',4,4,{art:38});break;
     case 'octonion':hit(key,8);heal(s,`hero${p}`,8);break;
-    case 'oracle':enemy.hand.forEach(c=>c.cost=Math.min(10,c.cost+2));break;
     case 'infinity':minions(s,p).forEach(x=>copyMinion(s,p,x));break;
     case 'triangle':setAttack(m,Math.floor(Math.hypot(m.attack,m.hp)));break;
     case 'circle': {const returning=minions(s,1-p);enemy.board=enemy.board.filter(x=>x.type==='location');returning.forEach(x=>{if(BY_ID[x.id])addHand(s,1-p,x.id);else if(enemy.hand.length<10)enemy.hand.push({uid:++s.serial,id:'token',cost:1,blueprint:{...x,type:'minion',target:null,health:x.maxHp,hp:x.maxHp,cost:1}});});log(s,'“내 원을 밟지 마라!”');break;}
@@ -387,25 +460,15 @@ function spell(s,p,id,key,definition=BY_ID[id]) {
     case 'log':setAttack(m,m.attack>0?Math.floor(Math.log2(m.attack)):0);break;
     case 'exponential':m.attack*=2;m.hp*=2;m.maxHp*=2;break;
     case 'integral':me.armor+=minions(s,p).reduce((sum,x)=>sum+x.hp,0);break;
-    case 'normal':hit(key,4);m.taunt=true;break;
-    case 'fault':s.players.forEach(pl=>pl.board.filter(x=>x.type!=='location').forEach(x=>{if(x.attack>=4)x.hp=0;}));break;
     case 'dice':for(let i=0;i<6;i++){const ts=characters(s,1-p);hit(ts[Math.floor(random(s)*ts.length)],1);settle(s);if(s.phase==='over')break;}break;
     case 'coin':if(random(s)<.5){draw(s,p);draw(s,p);draw(s,p);}else token(s,p,'행운의 동전',5,5,{art:83});break;
-    case 'bayes':enemy.revealed=true;draw(s,p);draw(s,p);break;
     case 'gauss': {const n=Math.max(0,...enemy.board.map(x=>x.attack));minions(s,1-p).forEach(x=>{if(x.attack===n)x.hp=0;});break;}
-    case 'euler': {const top=minions(s,1-p).sort((a,b)=>b.hp-a.hp)[0];if(top)hit(top.uid,7);minions(s,1-p).filter(x=>x!==top).forEach(x=>hit(x.uid,1));break;}
     case 'voronoi':minions(s,p).forEach(x=>x.territorySite=true);break;
-    case 'menger':minions(s,1-p).forEach(x=>hit(x.uid,me.armor));me.armor=0;break;
     case 'hanoi':me.hanoi={pegs:[[3,2,1],[],[]],moves:0};break;
-    case 'koch':for(let i=0;i<3;i++)token(s,p,'코흐의 작은 눈송이',1,2,{taunt:true,art:90});me.armor+=3;break;
-    case 'mandelbrot':minions(s,1-p).forEach(()=>token(s,p,'심연의 프랙탈',3,3,{art:91}));break;
     case 'banach':copyMinion(s,p,m);copyMinion(s,p,m);break;
-    case 'demorgan':s.players.forEach(pl=>pl.board.filter(x=>x.type!=='location').forEach(x=>{const a=x.attack;setAttack(x,x.hp);x.hp=a;x.maxHp=a;}));break;
     case 'contradiction':silence(m);m.attack=0;draw(s,p);break;
     case 'golden':{const a=m.attack,h=m.hp;setAttack(m,h);m.hp=m.maxHp=a+h;break;}
     case 'discriminant':{const [a,b]=minions(s,p).slice(0,2).map(x=>x.attack),delta=b*b-4*a*m.hp;emit(s,{kind:'math',key:m.uid,expression:`Δ = ${b}² − 4×${a}×${m.hp} = ${delta}`});if(delta<0)setAttack(m,0);else for(let i=0;i<(delta===0?1:2);i++)copyMinion(s,p,m);break;}
-    case 'conjugate':for(let i=0;i<2;i++)token(s,p,'켤레의 검사',3,2,{charge:true,art:97});break;
-    case 'limit':minions(s,p).forEach(x=>x.shield=true);me.armor+=6;break;
     case 'qed':hit(`hero${1-p}`,minions(s,p).length>=5?30:15);break;
     case 'discovery':{const pool=shuffle(s,CARDS.filter(c=>c.type==='spell'&&!c.heroClass).map(c=>c.id));s.choice={p,kind:'discover',title:'주문 발견',options:pool.slice(0,3)};break;}
     case 'dilemma':s.choice={p,kind:'monty-pick',title:'문 하나를 고르세요',options:[0,1,2],prize:Math.floor(random(s)*3)};break;
@@ -435,7 +498,6 @@ export function play(s,p,uid,key=null,position=s.players[p].board.length) {
       const placed=summon(s,p,c.id,options,position);
       if(c.id==='demon')s.players[1-p].revealed=true;
       if(c.id==='barber')minions(s,1-p).forEach(x=>{if(x.attack%2!==0)x.hp=0;});
-      if(c.id==='pigeon')for(let i=0;i<2;i++)token(s,p,'집 없는 비둘기',2,2,{art:52});
       if(c.id==='emptyking'&&me.board.length===1)buff(placed,6,6);
       if(c.id==='group')buff(placed,(me.board.length-1)*2,(me.board.length-1)*2);
       if(c.id==='nash'&&me.board.length<capacity(s,p)){const enemy=s.players[1-p],x=enemy.board.find(x=>x.attack<=2);if(x){enemy.board=enemy.board.filter(m=>m!==x);x.asleep=true;x.attacks=0;me.board.push(x);}}
@@ -455,7 +517,7 @@ export function play(s,p,uid,key=null,position=s.players[p].board.length) {
     spell(s,p,c.id,key,def);
     settle(s);
     if(me.quest&&c.id!=='proofquest'&&++me.quest.progress>=3){token(s,p,'완성된 증명',8,8,{taunt:true,art:99});me.quest=null;log(s,'미완성의 증명 완료','quest');}
-    if(s.phase!=='over')for(const watcher of [...me.board])if(!watcher.silenced){if(watcher.ability==='witch')characters(s,1-p).forEach(k=>damage(s,k,1));if(watcher.ability==='hypatia')me.armor+=3;}
+    if(s.phase!=='over')for(const watcher of [...me.board])if(!watcher.silenced){if(watcher.ability==='witch')mathEffect(s,p,{rule:'agnesi'},{source:watcher},[]);if(watcher.ability==='hypatia')me.armor+=3;}
   }
   settle(s);return true;
 }
@@ -483,7 +545,7 @@ export function hanoiMove(s,p,from,to){
   settle(s);return true;
 }
 export function canUseLocation(s,p,uid){const m=s.players[p].board.find(m=>m.uid===uid);return !!(s.phase==='play'&&!s.choice&&s.current===p&&m?.type==='location'&&s.turn>=m.readyTurn&&minions(s,p).length>0);}
-export function redistributeTargets(s,p,uid){return minions(s,p).filter(m=>m.uid!==uid&&m.hp>0&&!m.relation&&m.attack>(m.auraAttack||0)).map(m=>m.uid);}
+export function redistributeTargets(s,p,uid){return minions(s,p).filter(m=>m.uid!==uid&&m.hp>0&&!m.relation&&!m.taxiPartner&&m.attack>(m.auraAttack||0)).map(m=>m.uid);}
 export function canRedistribute(s,p,uid){const m=s.players[p].board.find(m=>m.uid===uid);return !!(s.phase==='play'&&!s.choice&&s.current===p&&m?.hp>0&&m.ability==='conservation'&&!m.silenced&&!m.relation&&m.mathUsedTurn!==s.turn&&redistributeTargets(s,p,uid).length);}
 export function redistribute(s,p,uid,key){
   if(!canRedistribute(s,p,uid)||!redistributeTargets(s,p,uid).some(k=>String(k)===String(key)))return false;
@@ -511,6 +573,7 @@ export function canAttack(s,p,key) {
   const t=findTarget(s,key);if(!t||t.p!==p)return false;
   if(t.entity.frozenUntil!=null||t.entity.type==='location')return false;
   if(!t.hero&&t.entity.attackEquation&&t.entity.attack!==t.entity.hp)return false;
+  if(!t.hero&&t.entity.undecidable&&t.entity.attack===t.entity.hp)return false;
   return !!(t.hero?!!t.entity.weapon&&!t.entity.heroAttacked:t.entity.attack>0&&(!t.entity.asleep||t.entity.charge||t.entity.rush)&&t.entity.attacks<(t.entity.uniqueAttack?Infinity:t.entity.windfury?2:1)&&(!t.entity.uniqueAttack||attackTargets(s,p,key).length>0));
 }
 export function attack(s,p,from,to) {
@@ -527,18 +590,12 @@ export function endTurn(s,p) {
   if(s.phase!=='play'||s.choice||s.current!==p)return false;
   for(const m of [...s.players[p].board]){
     if(m.hp<=0||m.silenced)continue;
-    switch(m.ability){
+    switch(BY_ID[m.ability]?.onEnd?null:m.ability){
       case 'rabbit': {const n=m.next;[m.previous,m.next]=[m.next,Math.min(99,m.previous+m.next)];for(let i=0;i<n&&s.players[p].board.length<capacity(s,p);i++)token(s,p,'피보나치의 작은 토끼',1,1,{art:0});break;}
       case 'ant':m.ant=walkAnt(m.ant);setAttack(m,m.ant.black.length);emit(s,{kind:'math',key:m.uid,expression:`${m.ant.steps}걸음 · 검정 ${m.ant.black.length}칸`});break;
       case 'amplifier':{const row=minions(s,p).filter(x=>x!==m),values=row.map(x=>Math.max(0,x.attack-(x.auraAttack||0))),next=amplifyFrequency(values,m.frequency??1);row.forEach((x,i)=>setAttack(x,next[i]));emit(s,{kind:'math',key:m.uid,expression:`주파수 ${m.frequency??1}: [${values.join(', ')}] → [${next.join(', ')}]`});break;}
-      case 'monk':minions(s,p).forEach(x=>x.attack++);break;
       case 'hotel':for(let i=0;i<2;i++)token(s,p,'무한 호텔의 손님',2,2,{art:14});break;
-      case 'horn':characters(s,1-p).forEach(k=>damage(s,k,2));break;
-      case 'maxwell': {const target=minions(s,1-p).sort((a,b)=>b.attack-a.attack)[0];if(target)damage(s,target.uid,3);heal(s,`hero${p}`,3);break;}
-      case 'butterfly': {const ts=characters(s,1-p);damage(s,ts[Math.floor(random(s)*ts.length)],4);break;}
-      case 'brown': {const ts=minions(s,1-p);if(ts.length)damage(s,ts[Math.floor(random(s)*ts.length)].uid,3);break;}
       case 'goddess': {const spells=CARDS.filter(c=>c.type==='spell');addHand(s,p,spells[Math.floor(random(s)*spells.length)].id,0);break;}
-      case 'noether':minions(s,p).filter(x=>x!==m).forEach(x=>x.shield=true);break;
       case 'pascaltriangle': {const b=minions(s,p),i=b.indexOf(m);setAttack(m,(b[i-1]?.attack||0)+(b[i+1]?.attack||0));break;}
     }
     if(m.hp>0)runEffects(s,p,BY_ID[m.ability]?.onEnd,{source:m});
