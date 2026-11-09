@@ -37,8 +37,39 @@
 .hub-shop,.hub-rewards{position:absolute;border:.2cqw solid #a28a61;border-radius:50%;background:radial-gradient(ellipse at 40% 30%,#625944,#302d25 75%);color:#dfcda9;font:1.7cqw var(--display);text-shadow:0 1px #1e130a;box-shadow:0 .2cqw .3cqw #0009,inset 0 0 0 .2cqw #30271c}
 .hub-shop{left:13.25%;width:5.5%;height:8.25%;top:83.4%;font-size:1.5cqw}.hub-rewards{left:19.5%;width:5.5%;height:8.25%;top:83.4%;background:radial-gradient(#5d8582,#284345)}.hub-rewards span{font:900 3cqw var(--numbers);color:#ead29d}.hub-shop:hover,.hub-rewards:hover{filter:brightness(1.18)}
 .hub-resume{position:absolute;top:63%;left:42%;width:16%;min-height:3.2cqw;background:none;border:0;padding:.5cqw;font:1.4cqw var(--display);color:#dcc9a5;text-shadow:0 1px 3px #160d08}.hub-resume:hover{color:#fff0cf}
-.hub-chest .hub-utilities{left:4%;right:4%;top:auto;bottom:1%;gap:.7cqw;justify-content:flex-end}.hub-chest .hub-utilities button{min-height:3cqw;border:0;border-radius:0;background:none;color:#b8a68a;font:1.3cqw var(--display);padding:.45cqw 1.2cqw;box-shadow:none;text-shadow:0 1px 3px #160d08}.hub-chest .hub-utilities button:first-child{margin-right:auto}.hub-chest .hub-utilities button:last-child{font:1.8cqw/1 var(--sans);padding:.2cqw .8cqw}.hub-chest .hub-utilities button:hover{color:#f2dfbc}
-@media(max-width:650px) and (orientation:portrait){.hub-chest{min-height:560px;aspect-ratio:auto}.hub-actions{left:33%;right:33%;top:26%;height:35.5%;gap:6px}.hub-actions button{font-size:clamp(15px,3.2vw,18px);border-width:1px;border-radius:5px}.hub-actions button:first-child,.hub-actions button:last-child{margin-inline:6px}.hub-chest h1{font-size:23px;left:25%;right:25%}.hub-resume{left:35%;width:30%;font-size:15px;min-height:34px}.hub-plaque{font-size:14px}.hub-shop{font-size:clamp(9px,2vw,12px);padding:0}.hub-rewards{padding:0}.hub-rewards span{font-size:20px}.hub-chest .hub-utilities button{min-height:36px;font-size:13px;padding:5px 10px}.hub-chest .hub-utilities button:last-child{font-size:21px}}
+.hub-chest .hub-utilities{left:13%;right:25%;top:auto;bottom:0;gap:.7cqw;align-items:center;justify-content:flex-end}.hub-chest .hub-utilities button{min-height:44px;border:0;border-radius:0;background:none;color:#b8a68a;font:1.3cqw var(--display);padding:.45cqw 1.2cqw;box-shadow:none;text-shadow:0 1px 3px #160d08}.hub-chest .hub-utilities button:first-child{margin-right:auto}.hub-chest .hub-utilities button:last-child{font:1.8cqw/1 var(--sans);padding:.2cqw .8cqw;display:grid;place-items:center}.hub-chest .hub-utilities button:hover{color:#f2dfbc}
+.hub-dock{position:absolute;left:13.4%;width:59.4%;top:81.2%;height:11.6%;display:grid;grid-template-columns:5.5cqw .62cqw 5.5cqw 2.58cqw 22cqw 1.2cqw 22cqw;align-items:center}
+.hub-dock .hub-shop{grid-column:1}.hub-dock .hub-rewards{grid-column:3}.hub-dock .left{grid-column:5}.hub-dock .right{grid-column:7}
+.hub-dock .hub-shop,.hub-dock .hub-rewards{position:static;width:100%;height:auto;aspect-ratio:1}
+.hub-dock .hub-plaque{position:static;width:100%;height:100%}
+.hub-chest .hub-utilities button,.hub-resume,.hub-shop,.hub-rewards{min-width:44px;min-height:44px;color:var(--hub-label)}
+.hub-chest .hub-utilities svg{width:22px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.6}
+@media(prefers-reduced-motion:reduce){.hub-chest button{transition:none}}
+/* Compact screens use flowing controls; the painted chest keeps its proportions. */
+@media(max-width:700px),(max-height:520px){
+  .hub-stage{padding:0;background:#17100b}
+  .hub-chest{width:100%;min-height:100svh;aspect-ratio:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:'title title' 'main main' 'resume resume' 'dock dock' 'utilities utilities';grid-template-rows:auto 1fr auto auto auto;gap:8px 16px;padding:max(24px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));background:linear-gradient(#1e100bba,#1e100be8),url('/public/art/menu-chest.png') center/cover;box-shadow:none}
+  .hub-chest h1{grid-area:title;position:static;height:auto;font-size:28px;padding:clamp(28px,6.4svh,64px) 0 12px;letter-spacing:2px;color:var(--hub-label)}
+  .hub-actions{grid-area:main;position:static;width:min(100%,400px);height:auto;justify-self:center;align-self:center;gap:8px}
+  .hub-actions button{min-height:68px;font-size:20px;padding:16px 15%}
+  .hub-actions button:first-child,.hub-actions button:last-child{margin-inline:0}
+  .hub-resume{grid-area:resume;position:static;width:100%;font-size:16px;padding:8px}
+  .hub-plaque{position:static;width:100%!important;min-height:56px;background:var(--hub-button) center/100% 100% no-repeat;font-size:17px;padding:12px}
+  .hub-dock{grid-area:dock;position:static;width:100%;height:auto;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+  .hub-dock :is(.hub-shop,.hub-rewards,.hub-plaque){grid-column:auto}
+  .hub-dock .hub-shop,.hub-dock .hub-rewards{aspect-ratio:auto}
+  .hub-shop,.hub-rewards{position:static;width:100%;height:auto;min-height:48px;border:1px solid var(--hub-brass);border-radius:4px;background:#281c15;color:var(--hub-label);box-shadow:none;font:16px var(--display);padding:8px}
+  .hub-rewards span{display:none}.hub-rewards:after{content:'보상'}
+  .hub-chest .hub-utilities{grid-area:utilities;position:static;display:flex;align-items:center;gap:8px;margin-top:8px}
+  .hub-chest .hub-utilities button{font-size:14px;padding:8px;min-height:44px}.hub-chest .hub-utilities button:last-child{padding:8px;display:grid;place-items:center}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .hub-chest{grid-template-columns:minmax(280px,1.4fr) repeat(2,minmax(100px,1fr));grid-template-areas:'title title title' 'main dock dock' 'main resume resume' 'utilities utilities utilities';grid-template-rows:auto 1fr auto auto;gap:4px 16px;padding:8px 24px}
+  .hub-chest h1{font-size:23px;padding:0}.hub-actions{gap:4px}.hub-actions button{min-height:48px;font-size:18px;padding:8px 15%}.hub-chest .hub-utilities{margin-top:0}
+  .hub-dock{align-content:center;grid-template-rows:56px 56px}.hub-dock .hub-plaque{height:56px}
+  .hub-dock :is(.hub-shop,.hub-rewards){height:56px;border:0;border-radius:0;background:var(--hub-button) center/100% 100% no-repeat;color:var(--hub-ink);text-shadow:0 1px #f4e4c6}
+  .hub-resume{width:200px;justify-self:center}
+}
 .cabinet-stage{min-height:100dvh;display:grid;place-items:center;background:radial-gradient(#352718,#100b08)}
 .game-cabinet{container-type:inline-size;position:relative;width:min(100vw,150dvh);aspect-ratio:3/2;background:url('/public/art/deck-room.png') center/100% 100%;filter:drop-shadow(0 10px 30px #000)}
 .cabinet-title{position:absolute;top:3.4%;left:25%;width:26%;height:6%;display:grid;place-items:center;color:#492c15;text-shadow:0 1px #ffdf9e;font:2.35cqw var(--display)}

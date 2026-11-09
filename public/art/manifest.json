@@ -1488,6 +1488,14 @@
   },
   "screens": [
     {
+      "file": "menu-button.png",
+      "provider": "codex",
+      "generator": "aldegad/sprite-gen 4.0.0",
+      "report": "art-work/menu-button-report.json",
+      "prompt": "art-work/menu-button-prompt.txt",
+      "purpose": "Reusable transparent button surface; labels and interaction remain native HTML."
+    },
+    {
       "file": "menu-chest.png",
       "provider": "codex",
       "generator": "aldegad/sprite-gen 4.0.0",

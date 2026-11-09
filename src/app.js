@@ -241,12 +241,30 @@ function navigate(next){
   view=next;render();if(next==='battle'){if(game?.phase==='mulligan')showMulligan();else scheduleAI();}
 }
 function screen(title,body,back='home'){
-  app.innerHTML=`<section class="room-screen ${view==='setup'?'hs-setup':''}"><header class="room-heading"><button class="back-button" id="screen-back">‹ 뒤로</button><h1>${title}</h1><span class="room-mark">∎</span></header>${body}</section>`;
+  const backButton='<button class="back-button" id="screen-back">‹ 뒤로</button>';
+  app.innerHTML=`<section class="room-screen ${view==='setup'?'hs-setup':''}">${view==='setup'?backButton:''}<header class="room-heading">${view==='setup'?'':backButton}<h1>${title}</h1></header>${body}</section>`;
   $('#screen-back').onclick=()=>navigate(back);
 }
 function renderHome(){
   const ongoing=game&&game.phase!=='over';
-  app.innerHTML=`<section class="hub-stage"><div class="hub-chest"><h1>매스스톤</h1><nav class="hub-actions" aria-label="메인 메뉴"><button data-go="setup"><span>대전</span></button><button data-go="arena"><span>투기장</span></button><button id="home-brawl"><span>선술집 난투</span></button><button data-go="modes"><span>게임 모드</span></button></nav><button class="hub-rewards" data-go="rewards" aria-label="보상" title="보상"><span aria-hidden="true">!</span></button><nav class="hub-utilities" aria-label="보조 메뉴"><button data-go="online">대전방</button><button data-go="history">기록</button><button data-go="settings" aria-label="설정"><span aria-hidden="true">⚙</span></button></nav><button class="hub-shop" data-go="shop">상점</button><button class="hub-plaque left" data-go="packs">카드팩</button><button class="hub-plaque right" data-go="decks">내 카드</button>${ongoing?'<button class="hub-resume" id="resume">이어 하기</button>':''}</div></section>`;
+  app.innerHTML=`<section class="hub-stage"><div class="hub-chest">
+    <h1>매스스톤</h1>
+    <nav class="hub-actions" aria-label="메인 메뉴">
+      <button data-go="setup">대전</button><button data-go="arena">투기장</button>
+      <button id="home-brawl">선술집 난투</button><button data-go="modes">게임 모드</button>
+    </nav>
+    ${ongoing?'<button class="hub-resume" id="resume">이어 하기</button>':''}
+    <nav class="hub-dock" aria-label="카드와 보상">
+      <button class="hub-shop" data-go="shop">상점</button>
+      <button class="hub-rewards" data-go="rewards" aria-label="보상" title="보상"><span aria-hidden="true">!</span></button>
+      <button class="hub-plaque left" data-go="packs">카드팩</button>
+      <button class="hub-plaque right" data-go="decks">내 카드</button>
+    </nav>
+    <nav class="hub-utilities" aria-label="보조 메뉴">
+      <button data-go="online">대전방</button><button data-go="history">기록</button>
+      <button data-go="settings" aria-label="설정"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 3-.7 2.3-2 .9L4 5.7 2 9l1.7 1.8v2.4L2 15l2 3.3 2.3-.5 2 .9L9 21h4l.7-2.3 2-.9 2.3.5 2-3.3-1.7-1.8v-2.4L20 9l-2-3.3-2.3.5-2-.9L13 3Z"/><circle cx="11" cy="12" r="3"/></svg></button>
+    </nav>
+  </div></section>`;
   app.querySelectorAll('[data-go]').forEach(el=>el.onclick=()=>{if(el.dataset.go==='setup')matchMode='casual';navigate(el.dataset.go);});$('#resume')?.addEventListener('click',()=>navigate('battle'));$('#home-brawl').onclick=()=>{matchMode='brawl';deckIndex=9;setupDeckId=null;navigate('setup');};
 }
 function renderPacks(justRevealed=null){
@@ -381,7 +399,7 @@ function renderHistory(){
   $('#history-play')?.addEventListener('click',()=>navigate('setup'));app.querySelectorAll('[data-match]').forEach(el=>el.onclick=()=>{const m=profile.history[Number(el.dataset.match)];showDialog(`<button class="close" data-close aria-label="닫기">×</button><h2>${result(m)} · ${m.turns}턴</h2><ol class="history">${(m.log||[]).map(l=>`<li><small>${l.turn||0}턴</small> ${esc(l.text)}</li>`).join('')}</ol>`);});
 }
 function renderSettings(){
-  screen('설정',`<div class="settings-book"><label><span>효과음</span><input id="setting-sound" type="checkbox" ${soundOn?'checked':''}></label><label><span>음량</span><input id="setting-volume" type="range" min="0" max="100" value="${profile.settings.volume*100}"></label><label><span>턴 제한 시간<small>다음 대전부터 적용</small></span><select id="setting-timer">${[0,60,90].map(n=>`<option value="${n}" ${profile.settings.turnSeconds===n?'selected':''}>${n?n+'초':'제한 없음'}</option>`).join('')}</select></label><p>컴퓨터 대전은 메뉴에서 일시 정지됩니다. 대전방의 시간은 계속 흐릅니다.</p>${game&&game.phase!=='over'?'<button class="outline-button" id="setting-resume">이어 하기</button><button class="text-button" id="concede-game">항복</button>':''}</div>`);
+  screen('설정',`<div class="settings-book"><label><span>효과음</span><input id="setting-sound" type="checkbox" ${soundOn?'checked':''}></label><label><span>음량</span><input id="setting-volume" type="range" min="0" max="100" value="${profile.settings.volume*100}"></label><label><span>턴 제한 시간<small>다음 대전부터 적용</small></span><select id="setting-timer">${[0,60,90].map(n=>`<option value="${n}" ${profile.settings.turnSeconds===n?'selected':''}>${n?n+'초':'제한 없음'}</option>`).join('')}</select></label><p>컴퓨터 대전은 메뉴에서 일시 정지됩니다. 대전방의 시간은 계속 흐릅니다.</p>${game&&game.phase!=='over'?'<div class="settings-actions"><button class="outline-button" id="setting-resume">이어 하기</button><button class="text-button" id="concede-game">항복</button></div>':''}</div>`);
   $('#setting-sound').onchange=e=>{soundOn=e.target.checked;profile.settings.sound=soundOn;saveProfile();};$('#setting-volume').oninput=e=>{profile.settings.volume=Number(e.target.value)/100;saveProfile();};$('#setting-timer').onchange=e=>{profile.settings.turnSeconds=Number(e.target.value);saveProfile();};
   $('#setting-resume')?.addEventListener('click',()=>navigate('battle'));$('#concede-game')?.addEventListener('click',()=>{if(online){networkAction({type:'concede'});return;}applyAction(game,0,{type:'concede'});save();recordMatch(profile,game);saveProfile();navigate('battle');});
 }

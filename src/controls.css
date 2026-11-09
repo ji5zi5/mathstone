@@ -1,0 +1,227 @@
+/* Shared menu controls use the same painted material as the game furniture. */
+:root {
+  --control-face: url('/public/art/menu-button.png');
+  --control-ink: #342416;
+  --control-label: #eedbb7;
+  --control-focus: #a6dcf0;
+  --control-min-height: 48px;
+}
+
+:is(body[data-view]:not([data-view="battle"]) #app,#dialog) :is(
+  .gold-button, .outline-button, .text-button, .back-button,
+  .cabinet-back, .book-back, .new-ribbon, .recipe-choice
+) {
+  min-height: var(--control-min-height);
+  min-width: 128px;
+  max-width: 100%;
+  border: solid transparent;
+  border-width: 12px 32px;
+  border-image: var(--control-face) 120 320 fill / 12px 32px / 0 stretch;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--control-ink);
+  font: 900 clamp(14px,1.5cqw,18px)/1.25 var(--display);
+  padding: 0 10px;
+  text-shadow: 0 1px #f4e4c6;
+  transition: filter 150ms;
+}
+
+/* The blue play seal is a distinct primary action, not a parchment plaque. */
+body[data-view="setup"] #app #setup-start {
+  min-height: 64px;
+  border: 5px solid #9eaaa6;
+  border-image: none;
+  border-radius: 50%;
+  background: radial-gradient(#397a98, #173d51);
+  color: #fff1d4;
+  text-shadow: 0 2px #142d3b;
+}
+
+:is(body[data-view]:not([data-view="battle"]) #app,#dialog) :is(
+  .gold-button, .outline-button, .text-button, .back-button,
+  .cabinet-back, .book-back, .new-ribbon, .recipe-choice
+):enabled:hover { filter: brightness(1.12); }
+body[data-view]:not([data-view="battle"]) #app button:focus-visible {
+  outline: 2px solid var(--control-focus);
+  outline-offset: 3px;
+}
+dialog .close { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; }
+dialog:has(.card-inspection) .close { width: 44px; height: 44px; right: 0; top: 0; }
+dialog:has(.card-inspection) { overflow-y: auto; max-height: 95dvh; }
+.card-inspection .detail-card { --card-w: min(285px,calc(95vw - 70px)); flex-shrink: 0; }
+dialog>h2, dialog :is(.hanoi-puzzle,.monty-choice,.frequency-choice)>h2 { font: 900 clamp(22px,2.4vw,28px)/1.25 var(--display); margin: 0 32px 20px; }
+dialog .menu-bottom { flex-wrap: wrap; gap: 12px; }
+dialog .menu-bottom>button { flex: 1; }
+#dialog .recipe-choice { --control-min-height: 80px; justify-content: center; align-items: center; text-align: center; gap: 4px; }
+dialog .recipe-choice small { color: #695239; }
+dialog .recipe-choice b { font-size: 16px; }
+body[data-view]:not([data-view="battle"]) #app button:disabled {
+  cursor: default;
+}
+
+.cabinet-title { top: 2.5%; height: 6%; margin: 0; font: 900 clamp(18px,2cqw,25px)/1 var(--display); }
+.hs-setup .room-heading { top: 2.5%; height: 6%; display: grid; place-items: center; }
+.hs-setup .room-heading h1 { margin: 0; font: 900 clamp(18px,2cqw,25px)/1 var(--display); letter-spacing: 0; }
+.hs-setup .back-button { position: absolute; bottom: 3%; right: 5%; }
+.room-screen:not(.hs-setup) .room-heading { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+.room-screen:not(.hs-setup) .room-heading .back-button { grid-column: 1; justify-self: start; }
+.room-screen:not(.hs-setup) .room-heading h1 { grid-column: 2; }
+.room-screen:not(.hs-setup) .room-heading h1,.pack-header h1 {
+  display: grid; place-items: center; width: clamp(220px,25vw,320px); min-height: 64px;
+  margin: 0; padding: 12px 32px; background: var(--control-face) center / 100% 100% no-repeat;
+  color: var(--control-ink); font: 900 24px/1.2 var(--display); letter-spacing: 0;
+  text-shadow: 0 1px #f4e4c6;
+}
+.book-heading { top: 8.5%; height: 5%; display: grid; place-items: center; margin: 0; font-size: clamp(18px,1.9cqw,24px); line-height: 1.1; }
+.pack-header { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; }
+.pack-header > button { justify-self: start; }
+.pack-header > span { justify-self: end; }
+.pack-controls { gap: 16px; }
+.shop-purchase .text-button { width: 100%; }
+.cabinet-aside :is(.gold-button,.outline-button,.text-button) { width: 100%; }
+.settings-actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.settings-book .settings-actions button { margin: 0; flex: 1; }
+.settings-book #concede-game { color: #72251b; }
+.book-sidebar .book-deck-bottom { gap: 8px; }
+.book-sidebar .new-ribbon { width: 100%; }
+body[data-view] #app .book-sidebar :is(.new-ribbon,.gold-button,.outline-button,.text-button) { min-width: 0; padding-inline: 0; border-width: 12px 20px; border-image-width: 12px 20px; }
+.book-back { bottom: 4.5%; }
+.journal-frame>h1 { border: 0; box-shadow: none; background: var(--control-face) center / 100% 100% no-repeat; font: 900 clamp(18px,2.2cqw,25px)/1 var(--display); height: 9%; top: -2%; }
+body[data-view="rewards"] #app .reward-node .gold-button { min-width: 0; width: 100%; padding-inline: 0; border-width: 12px 22px; border-image-width: 12px 22px; }
+
+.hub-resume {
+  background: var(--control-face) center / 100% 100% no-repeat;
+  color: var(--control-ink);
+  text-shadow: 0 1px #f4e4c6;
+  padding: 12px 20px;
+}
+.hub-resume:hover { color: var(--control-ink); filter: brightness(1.12); }
+.hub-chest .hub-utilities button {
+  background: var(--control-face) center / 100% 100% no-repeat;
+  color: var(--control-ink);
+  text-shadow: 0 1px #f4e4c6;
+  min-width: 96px;
+  padding: 8px 16px;
+}
+.hub-chest .hub-utilities button:hover { color: var(--control-ink); filter: brightness(1.12); }
+.hub-chest .hub-utilities button:last-child {
+  min-width: 44px;
+  background: #34271b;
+  border: 1px solid var(--hub-brass);
+  border-radius: 50%;
+  color: var(--control-label);
+}
+
+@media(max-width:700px) {
+  .hub-dock :is(.hub-shop,.hub-rewards) { border: 0; border-radius: 0; background: var(--control-face) center / 100% 100% no-repeat; color: var(--control-ink); text-shadow: 0 1px #f4e4c6; }
+  body[data-view] .topbar { transform: none; opacity: 1; }
+  .topbar :is(.menu-button,.icon-button,.nav) { min-width: 44px; min-height: 44px; font-size: 12px; }
+  .manage-deck-row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .manage-deck-row>span { grid-column: 1 / -1; }
+  .new-deck-hero { flex-wrap: wrap; }
+  .room-screen:not(.hs-setup) .room-heading { grid-template-columns: 1fr 1fr; }
+  .room-screen:not(.hs-setup) .room-heading h1 { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .room-screen:not(.hs-setup) .room-heading .back-button { grid-row: 2; }
+  .pack-header { grid-template-columns: 1fr auto; }
+  .pack-header h1 { grid-column: 1 / -1; grid-row: 1; text-align: center; justify-self: center; }
+  .settings-actions { flex-direction: column; gap: 12px; }
+  .hub-resume { width: min(200px, 100%); justify-self: center; }
+  .hub-chest .hub-utilities { width: 100%; }
+  body[data-view]:not([data-view="battle"]) #app .book-back { min-width: 0; padding: 8px; }
+  body[data-view]:not([data-view="battle"]) #app .book-deck-bottom :is(.text-button,.outline-button,.gold-button),
+  body[data-view]:not([data-view="battle"]) #app .new-ribbon { min-width: 0; padding: 10px 8px; font-size: 12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body[data-view]:not([data-view="battle"]) #app button { transition: none; }
+}
+
+@media(max-width:700px) {
+  .game-cabinet,.hs-setup {
+    width: 100%; min-height: 100svh; aspect-ratio: auto; margin: 0;
+    padding: 24px 20px 80px; display: flex; flex-direction: column; gap: 24px;
+    background: linear-gradient(#28130ed9,#28130ef0),url('/public/art/deck-room.png') center / cover;
+  }
+  .cabinet-stage { padding: 0; }
+  .cabinet-title,.hs-setup .room-heading {
+    position: static; width: 100%; height: auto; min-height: 60px; padding: 12px 32px;
+    background: var(--control-face) center / 100% 100% no-repeat; color: var(--control-ink);
+  }
+  .hs-setup .room-heading h1 { color: var(--control-ink); text-shadow: 0 1px #f4e4c6; }
+  .cabinet-back,.hs-setup .back-button { position: static; align-self: center; order: 10; }
+  .shop-display,.cabinet-aside,.arena-selection,.mode-medallions,.hs-setup .deck-shelf,.hs-setup .hero-stand {
+    position: static; width: 100%; height: auto; margin: 0;
+  }
+  .cabinet-aside { gap: 16px; }
+  .cabinet-aside h2,.shop-display h2,.arena-selection>h2 { font-size: 23px; }
+  .cabinet-aside p,.shop-caption,.arena-power-cost { font-size: 14px; }
+  .shop-display { gap: 16px; }
+  .shop-fan { height: 290px; }
+  .shop-sample { --card-w: 124px; left: calc(50% - 62px); }
+  .shop-fan .sealed-pack { width: 124px; height: 175px; left: calc(50% - 62px); }
+  .shop-fan .sealed-pack i { width: 60px; height: 60px; font-size: 38px; }
+  .shop-fan .pack-title { font-size: 14px; padding: 16px 0; }
+  .shop-fan .pack-seal { font-size: 9px; }
+  .shop-purchase .wallet { flex-direction: row; font-size: 16px; gap: 20px; }
+  .currency-coin,.currency-dust,.currency-pack { width: 20px; height: 20px; }
+  .purchase-option { min-height: 56px; padding: 12px 20px; }
+  .purchase-option b { font-size: 22px; }.purchase-option span,.shop-stock,.shop-stock b { font-size: 16px; }
+  .mode-medallions { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 12px; }
+  .mode-plaque { flex-direction: column; padding: 0; }
+  .mode-portrait,.mode-detail .mode-portrait { width: 100px; height: 100px; }
+  .mode-name { width: 100%; min-height: 44px; font-size: 17px; margin: -8px 0 0; }
+  .mode-plaque small { position: static; font-size: 12px; margin-top: 8px; }
+  .mode-detail h2 { font-size: 24px; }.mode-detail p { font-size: 14px; min-height: 0; }
+  .arena-heroes { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 16px 0; gap: 8px; }
+  .arena-hero { width: 100%; }.arena-hero>span { height: 130px; }.arena-hero>b { font-size: 14px; min-height: 44px; display: grid; place-items: center; }
+  .arena-deck-list { max-height: 320px; }.arena-deck-list span,.arena-deck-list i,.arena-deck-list b { font-size: 14px; }
+  .arena-selection .draft-options .card { --card-w: 180px; }
+  .brawl-rule b { font-size: 20px; }.hs-setup .brawl-rule p { font-size: 14px; }
+  .journal-tabs button { min-height: 44px; font-size: 11px; border-width: 2px; padding: 0; white-space: nowrap; }
+  .reward-node p,.journal-xp small { font-size: 12px; }.journal-pagination button { min-width: 44px; min-height: 44px; }
+  .hs-setup .setup-layout { display: flex; flex-direction: column; gap: 32px; }
+  .hs-setup .deck-shelf h2 { font-size: 20px; margin-bottom: 16px; }
+  .hs-setup .shelf-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+  .hs-setup .deck-box { height: 160px; }.hs-setup .deck-banner { height: 65px; }
+  .hs-setup .deck-banner b,.hs-setup .new-deck-box b { font-size: 14px; }
+  .hs-setup .deck-box .deck-emblem { width: 40px; height: 40px; font-size: 28px; margin: 10px 0; }
+  .hs-setup .deck-box small { font-size: 12px; }
+  .hs-setup .hero-stand { display: flex; gap: 12px; padding: 24px 0 0; }
+  .hs-setup .hero-stand-face { width: 120px; height: 145px; }
+  .hs-setup .hero-stand h2 { font-size: 24px; }.hs-setup .hero-stand .opponent-label { font-size: 14px; }
+  .play-mode-tabs button,.hero-power-info { font-size: 16px; min-height: 44px; }
+  .hs-setup .chosen-deck-name { font-size: 16px; }.hs-setup .mana-curve { height: 60px; }
+  .hs-setup .mana-curve>div { width: 24px; }.hs-setup .mana-curve span,.hs-setup .mana-curve b { font-size: 12px; }
+  .hs-setup .mana-curve i { width: 12px; max-height: 32px; }
+  .settings-book { padding: 20px; }.settings-book>label { gap: 16px; }
+  .book-stage { display: block; }
+  .collection-book {
+    width: 100%; min-height: 100svh; aspect-ratio: auto; padding: 16px 16px 80px;
+    display: flex; flex-direction: column; gap: 20px;
+    background: #ddc59d; color: var(--control-ink);
+  }
+  .book-tabs,.book-heading,.book-card-grid,.book-pagination,.book-toolbar,.book-sidebar,.book-back {
+    position: static; width: 100%; height: auto;
+  }
+  .book-tabs { gap: 4px; overflow-x: auto; }.book-tabs button { min-width: 56px; min-height: 44px; font-size: 14px; padding: 8px; }
+  .book-heading { font-size: 24px; min-height: 40px; }
+  .book-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: none; gap: 24px 12px; }
+  .book-card-slot .card { --card-w: min(38cqw,200px); }
+  .book-card-slot .cost { width: 7cqw; height: 8cqw; font-size: 5cqw; }
+  .book-card-slot .stat { width: 7cqw; height: 7cqw; font-size: 5cqw; }
+  .book-count { min-height: 32px; font-size: 12px; min-width: 64px; }
+  .book-pagination { font-size: 16px; }.book-pagination button { min-width: 44px; min-height: 44px; font-size: 24px; }
+  .book-toolbar { flex-wrap: wrap; gap: 12px; }
+  .cost-filters { flex-wrap: wrap; justify-content: flex-start; gap: 6px; }
+  .cost-filters button { width: 44px; height: 44px; font-size: 16px; }
+  .book-toolbar input,.book-toolbar select { flex: 1; width: 40%; min-height: 44px; font-size: 14px; padding: 8px; }
+  .book-sidebar { padding: 20px; background: #322419; border: 2px solid #96754c; gap: 12px; }
+  .book-sidebar>h2 { font-size: 22px; }.book-saved-list { gap: 12px; max-height: 320px; }
+  .deck-ribbon,.book-deck-heading { height: 72px; }.deck-ribbon b,.book-deck-heading input { font-size: 16px; }
+  .deck-ribbon small { font-size: 12px; }.book-sidebar select { font-size: 14px; min-height: 44px; padding: 8px; }
+  .book-deck-list { max-height: 360px; flex: auto; }.book-deck-list>button { min-height: 44px; gap: 8px; }
+  .book-deck-list span,.book-deck-list b { font-size: 14px; }.book-deck-list i { font-size: 18px; width: 24px; }
+  .book-deck-bottom { font-size: 14px; }.book-deck-bottom .mana-curve { height: 60px; }
+  .book-deck-bottom .mana-curve>div { width: 24px; }.book-deck-bottom .mana-curve span,.book-deck-bottom .mana-curve b { font-size: 12px; }
+  .book-deck-bottom .mana-curve i { width: 12px; max-height: 32px; }
+}
