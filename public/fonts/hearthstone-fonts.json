@@ -1,0 +1,30 @@
+{
+  "source": "User-provided Hearthstone_37.0.255790_APKPure.xapk",
+  "use": "Local prototype; no redistribution license acquired",
+  "fonts": [
+    {
+      "file": "YDISapphIIM.woff",
+      "source": "YDISapphIIM.ttf",
+      "family": "SapphIIM",
+      "embeddingFlags": 4
+    },
+    {
+      "file": "2002.woff",
+      "source": "2002.ttf",
+      "family": "2002L",
+      "embeddingFlags": 4
+    },
+    {
+      "file": "Belwe.woff",
+      "source": "Belwe.ttf",
+      "family": "Belwe Bd BT",
+      "embeddingFlags": 4
+    },
+    {
+      "file": "BelweNumbers.woff",
+      "source": "BelweNumbers.ttf",
+      "family": "Belwe Numbers Outline",
+      "embeddingFlags": 8
+    }
+  ]
+}

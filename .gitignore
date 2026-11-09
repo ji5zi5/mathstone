@@ -1,0 +1,13 @@
+node_modules/
+analysis/
+art-work/
+*.log
+.DS_Store
+.codex/
+.env
+.env.*
+!.env.example
+*.raw.png
+research/
+__pycache__/
+*.pyc

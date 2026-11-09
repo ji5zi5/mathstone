@@ -1,0 +1,46 @@
+{
+  "source": "User supplied Hearthstone 37.0.255790 XAPK",
+  "use": "Local prototype only. Redistribution license not obtained.",
+  "entries": [
+    {
+      "file": "minion-frame.png",
+      "source": "Card_Inhand_Generic_4604725608518819955.png",
+      "sha256": "ea67f94ee992812511881bbae21c19b1c4ee1070aa5aeef376ca5ffbb4686df4"
+    },
+    {
+      "file": "spell-frame.png",
+      "source": "Card_Inhand_Ability_Mage_7329772168697245361.png",
+      "sha256": "5961a02a9c05367ebeb78f31e3bd122b49ba7b233f223e213ffe5928e71692fe"
+    },
+    {
+      "file": "weapon-frame.png",
+      "source": "Card_Inhand_Weapon_Warlock_-1024246352663380692.png",
+      "sha256": "6b678cc3f0e5be29df16814e422a9b9de66822b0259617f94ce55b22d7413af2"
+    },
+    {
+      "file": "inplay-frame.png",
+      "source": "GenFX_Card_InPlay_AllyFrame_674626047316995440.png",
+      "sha256": "fe56226f1621e0e1e4972e05c4cd07e6d8c19e3e7dad9ddc02e1919bb6a39d84"
+    },
+    {
+      "file": "banners.png",
+      "source": "GenFX_Card_InHand_BannerAtlas_-3034482519384879705.png",
+      "sha256": "5cb27bd69bcaa8059da537a6c10e2f55f031df286cb3d00f2f41b4f028c54dce"
+    },
+    {
+      "file": "mana.png",
+      "source": "GenFX_Gem_Mana_D_8316986825969224176.png",
+      "sha256": "8ba3aff3578ec0e74974f8d594d9dc156c6255316d9451b97e4586e9c881e166"
+    },
+    {
+      "file": "attack.png",
+      "source": "GenFX_Gem_Attack_D_-5545765706323899500.png",
+      "sha256": "cd8d7d2cc6953e615a9095f26e4f641638c4abbcf5f1a83a7a13d41e8f3a0612"
+    },
+    {
+      "file": "health.png",
+      "source": "GenFX_Gem_Health_D_-1630012428546301708.png",
+      "sha256": "e57db9e026c435f79f0ed105ef553bc3457e95073875834264624e1faad487a0"
+    }
+  ]
+}

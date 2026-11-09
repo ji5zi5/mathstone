@@ -1,0 +1,46 @@
+{
+  "cards": 200,
+  "desktop": {
+    "width": 1440,
+    "height": 900,
+    "checked": 200,
+    "overflow": []
+  },
+  "narrow": {
+    "width": 575,
+    "height": 780,
+    "checked": 200,
+    "overflow": []
+  },
+  "mathematicianNames": [
+    "빌헬름 아커만",
+    "알프레트 타르스키",
+    "고틀로프 프레게",
+    "고트프리트 라이프니츠",
+    "다비트 힐베르트",
+    "앨런 튜링",
+    "에이다 러브레이스",
+    "리처드 해밍",
+    "아이작 뉴턴",
+    "카를 프리드리히 가우스",
+    "소피 제르맹",
+    "소피야 코발렙스카야",
+    "에미 뇌터",
+    "게오르크 칸토어",
+    "유클리드",
+    "앙리 푸앵카레",
+    "오귀스탱 코시",
+    "조제프 루이 라그랑주",
+    "피에르 드 페르마",
+    "레온하르트 오일러"
+  ],
+  "mathematicians": 20,
+  "interaction": [
+    "Fermat x³ at x=2: attack 8",
+    "Clicked differentiation: 3x², attack 12; current formula shown in detail",
+    "Taylor copied attack 12 and current function",
+    "Integrated original back to x³, attack 8; copy stayed 12"
+  ],
+  "profileRestored": true,
+  "errors": []
+}

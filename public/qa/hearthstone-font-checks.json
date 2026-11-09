@@ -1,0 +1,1478 @@
+{
+  "fonts": {
+    ".card-name": {
+      "fonts": [
+        {
+          "familyName": "SapphIIM",
+          "glyphCount": 8,
+          "isCustomFont": true,
+          "postScriptName": "SapphIIM"
+        }
+      ]
+    },
+    ".card-rules": {
+      "fonts": [
+        {
+          "familyName": "2002L",
+          "glyphCount": 56,
+          "isCustomFont": true,
+          "postScriptName": "2002L"
+        }
+      ]
+    },
+    ".cost": {
+      "fonts": [
+        {
+          "familyName": "Belwe Numbers Outline",
+          "glyphCount": 1,
+          "isCustomFont": true,
+          "postScriptName": "Belwe-NumbersOutline"
+        }
+      ]
+    }
+  },
+  "desktop": [
+    {
+      "name": "피보나치의 토끼",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "바이어슈트라스의 괴물",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 거북이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라플라스의 악마",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "맥스웰의 도깨비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아놀드의 고양이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "파스칼의 달팽이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아녜시의 마녀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "랭턴의 개미",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "메르센의 수도사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "데카르트의 파리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "러셀의 이발사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "테일러의 모조품",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "적분상수의 망령",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "힐베르트의 호텔",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가브리엘의 뿔",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "마르코프의 연쇄 사슬",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "데데킨트의 칼날",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "에라토스테네스의 체",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "클라인의 호리병",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뫼비우스의 고리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "네이피어의 뼈",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뷔퐁의 바늘",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "스메일의 말발굽",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "구분구적검",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "샌드위치의 압착 틀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디오판토스의 묘비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 왕관",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "페르마의 여백",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "갈루아의 새벽 유서",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 잃어버린 노트",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 택시",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "골드바흐의 편지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "에르되시의 여행 가방",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뒤러의 마방진",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라이프니츠의 미분소",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 알레프 제로",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "리만의 영점",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "해밀턴의 사원수",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "케일리의 팔원수",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "괴델의 불완전한 신탁",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 두 번째 무한",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "피타고라스의 삼각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 원",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "배반의 외나무다리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "미타그레플레르의 별",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "시에르핀스키의 양탄자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 정십칠각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "몬티 홀의 세 번째 문",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "귀납법의 도미노",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "슈뢰딩거의 고양이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "로렌츠의 나비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디리클레의 비둘기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "공집합의 왕",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "구골플렉스 골렘",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "괴물 군",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "고정점의 수호자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "불변자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "소수의 파수꾼",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "나머지의 밀항자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "브라운의 꽃가루",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "17년 주기의 매미",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "내시의 배신자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 여신",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "튜링의 기계",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 원론",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "히파티아의 천체관측기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뇌터의 대칭성",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸앵카레의 회귀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "파스칼의 삼각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디랙의 델타",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "크로네커의 델타",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 먼지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 대각선",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "선택공리의 손",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "0으로 나누기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "무한강하",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "로그의 축소렌즈",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "발산하는 심장",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "르베그의 측도",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "법선의 쐐기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "불연속의 단층",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "독립시행의 무정한 주사위",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "베르누이의 동전",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "베이즈의 조건부확률",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 소거법",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "오일러의 일곱 다리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "보로노이의 영토",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "멩거의 스펀지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "하노이의 탑",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "코흐의 눈송이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "만델브로의 심연",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "바나흐–타르스키의 역설",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "드모르간의 반전 인장",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "귀류법의 모순 감옥",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "황금비의 나선",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "판별식의 심판",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "켤레의 쌍검",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "도달할 수 없는 극한",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "증명 종료",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "선택공리의 서랍",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "몬티 홀의 선택",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "단 하나의 반례",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "페르마의 숨긴 증명",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 천문대",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "오컴의 면도날",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 녹",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 아킬레우스",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "켤레의 검사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "숨어 있는 근",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸앵카레의 불사조",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "르베그의 수집가",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸리에의 증폭기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 멈춘 화살",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "순간변화율",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "메르센의 합창단",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "미완성의 증명",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "돌아온 오일러",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 공준",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 지렛대",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    }
+  ],
+  "narrow": [
+    {
+      "name": "피보나치의 토끼",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "바이어슈트라스의 괴물",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 거북이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라플라스의 악마",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "맥스웰의 도깨비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아놀드의 고양이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "파스칼의 달팽이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아녜시의 마녀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "랭턴의 개미",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "메르센의 수도사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "데카르트의 파리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "러셀의 이발사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "테일러의 모조품",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "적분상수의 망령",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "힐베르트의 호텔",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가브리엘의 뿔",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "마르코프의 연쇄 사슬",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "데데킨트의 칼날",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "에라토스테네스의 체",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "클라인의 호리병",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뫼비우스의 고리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "네이피어의 뼈",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뷔퐁의 바늘",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "스메일의 말발굽",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "구분구적검",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "샌드위치의 압착 틀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디오판토스의 묘비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 왕관",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "페르마의 여백",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "갈루아의 새벽 유서",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 잃어버린 노트",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 택시",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "골드바흐의 편지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "에르되시의 여행 가방",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뒤러의 마방진",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라이프니츠의 미분소",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 알레프 제로",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "리만의 영점",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "해밀턴의 사원수",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "케일리의 팔원수",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "괴델의 불완전한 신탁",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 두 번째 무한",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "피타고라스의 삼각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 원",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "배반의 외나무다리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "미타그레플레르의 별",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "시에르핀스키의 양탄자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 정십칠각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "몬티 홀의 세 번째 문",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "귀납법의 도미노",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "슈뢰딩거의 고양이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "로렌츠의 나비",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디리클레의 비둘기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "공집합의 왕",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "구골플렉스 골렘",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "괴물 군",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "고정점의 수호자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "불변자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "소수의 파수꾼",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "나머지의 밀항자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "브라운의 꽃가루",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "17년 주기의 매미",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "내시의 배신자",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "라마누잔의 여신",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "튜링의 기계",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 원론",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "히파티아의 천체관측기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "뇌터의 대칭성",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸앵카레의 회귀",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "파스칼의 삼각형",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "디랙의 델타",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "크로네커의 델타",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 먼지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "칸토어의 대각선",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "선택공리의 손",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "0으로 나누기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "무한강하",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "로그의 축소렌즈",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "발산하는 심장",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "르베그의 측도",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "법선의 쐐기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "불연속의 단층",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "독립시행의 무정한 주사위",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "베르누이의 동전",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "베이즈의 조건부확률",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 소거법",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "오일러의 일곱 다리",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "보로노이의 영토",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "멩거의 스펀지",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "하노이의 탑",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "코흐의 눈송이",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "만델브로의 심연",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "바나흐–타르스키의 역설",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "드모르간의 반전 인장",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "귀류법의 모순 감옥",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "황금비의 나선",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "판별식의 심판",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "켤레의 쌍검",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "도달할 수 없는 극한",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "증명 종료",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "선택공리의 서랍",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "몬티 홀의 선택",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "단 하나의 반례",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "페르마의 숨긴 증명",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "가우스의 천문대",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "오컴의 면도날",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 녹",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 아킬레우스",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "켤레의 검사",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "숨어 있는 근",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸앵카레의 불사조",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "르베그의 수집가",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "푸리에의 증폭기",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "제논의 멈춘 화살",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "순간변화율",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "메르센의 합창단",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "미완성의 증명",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "돌아온 오일러",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "유클리드의 공준",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    },
+    {
+      "name": "아르키메데스의 지렛대",
+      "nameOverflow": false,
+      "overlap": false,
+      "rulesOverflow": false
+    }
+  ]
+}

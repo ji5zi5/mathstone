@@ -1,0 +1,1531 @@
+{
+  "generator": "aldegad/sprite-gen",
+  "version": "4.0.0",
+  "provider": "codex",
+  "generatedOn": "2026-11-06",
+  "format": "25 static illustration atlases, each 5 columns × 2 rows; 214 collectible cards each use a unique cell. Some superseded cells are unused.",
+  "sheets": [
+    {
+      "file": "sheet-0.png",
+      "elapsedSeconds": 69.594,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "rabbit",
+          "name": "피보나치의 토끼",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "monster",
+          "name": "바이어슈트라스의 괴물",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "turtle",
+          "name": "제논의 거북이",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "demon",
+          "name": "라플라스의 악마",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "maxwell",
+          "name": "맥스웰의 도깨비",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "cat",
+          "name": "아놀드의 고양이",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "snail",
+          "name": "파스칼의 달팽이",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "witch",
+          "name": "아녜시의 마녀",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "ant",
+          "name": "랭턴의 개미",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "monk",
+          "name": "메르센의 수도사",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-1.png",
+      "elapsedSeconds": 76.14,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "fly",
+          "name": "데카르트의 파리",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "barber",
+          "name": "러셀의 이발사",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "taylor",
+          "name": "테일러의 모조품",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "ghost",
+          "name": "적분상수의 망령",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "hotel",
+          "name": "힐베르트의 호텔",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "horn",
+          "name": "가브리엘의 뿔",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "chain",
+          "name": "마르코프의 연쇄 사슬",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "cut",
+          "name": "데데킨트의 칼날",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "sieve",
+          "name": "에라토스테네스의 체",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "bottle",
+          "name": "클라인의 호리병",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-2.png",
+      "elapsedSeconds": 64.765,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "mobius",
+          "name": "뫼비우스의 고리",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "bones",
+          "name": "네이피어의 뼈",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "needle",
+          "name": "뷔퐁의 바늘",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "horseshoe",
+          "name": "스메일의 말발굽",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "sword",
+          "name": "구분구적검",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "sandwich",
+          "name": "샌드위치의 압착 틀",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "tomb",
+          "name": "디오판토스의 묘비",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "crown",
+          "name": "아르키메데스의 왕관",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "margin",
+          "name": "페르마의 여백",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "letter",
+          "name": "갈루아의 새벽 유서",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-3.png",
+      "elapsedSeconds": 67.859,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "notebook",
+          "name": "라마누잔의 잃어버린 노트",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "taxi",
+          "name": "라마누잔의 택시",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "goldbach",
+          "name": "골드바흐의 편지",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "suitcase",
+          "name": "에르되시의 여행 가방",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "square",
+          "name": "뒤러의 마방진",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "epsilon",
+          "name": "라이프니츠의 미분소",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "aleph",
+          "name": "칸토어의 알레프 제로",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "zero",
+          "name": "리만의 영점",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "quaternion",
+          "name": "해밀턴의 사원수",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "octonion",
+          "name": "케일리의 팔원수",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-4.png",
+      "elapsedSeconds": 70.14,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "oracle",
+          "name": "괴델의 불완전한 신탁",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "infinity",
+          "name": "칸토어의 두 번째 무한",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "triangle",
+          "name": "피타고라스의 삼각형",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "circle",
+          "name": "아르키메데스의 원",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "bridge",
+          "name": "배반의 외나무다리",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "star",
+          "name": "미타그레플레르의 별",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "carpet",
+          "name": "시에르핀스키의 양탄자",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "polygon",
+          "name": "가우스의 정십칠각형",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "door",
+          "name": "몬티 홀의 세 번째 문",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "domino",
+          "name": "귀납법의 도미노",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-5.png",
+      "elapsedSeconds": 74.906,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "schrodinger",
+          "name": "슈뢰딩거의 고양이",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "butterfly",
+          "name": "로렌츠의 나비",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "pigeon",
+          "name": "디리클레의 비둘기",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "emptyking",
+          "name": "공집합의 왕",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "golem",
+          "name": "구골플렉스 골렘",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "group",
+          "name": "괴물 군",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "fixedpoint",
+          "name": "고정점의 수호자",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "invariant",
+          "name": "불변자",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "primeguard",
+          "name": "소수의 파수꾼",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "remainder",
+          "name": "나머지의 밀항자",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-6.png",
+      "elapsedSeconds": 70.218,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "brown",
+          "name": "브라운의 꽃가루",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "cicada",
+          "name": "17년 주기의 매미",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "nash",
+          "name": "내시의 배신자",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "goddess",
+          "name": "라마누잔의 여신",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "turing",
+          "name": "튜링의 기계",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "euclid",
+          "name": "유클리드의 원론",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "hypatia",
+          "name": "히파티아의 천체관측기",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "noether",
+          "name": "뇌터의 대칭성",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "recurrence",
+          "name": "푸앵카레의 회귀",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "pascaltriangle",
+          "name": "파스칼의 삼각형",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-7.png",
+      "elapsedSeconds": 68.922,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "delta",
+          "name": "디랙의 델타",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "kronecker",
+          "name": "크로네커의 델타",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "cantordust",
+          "name": "칸토어의 먼지",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "diagonal",
+          "name": "칸토어의 대각선",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "choice",
+          "name": "선택공리의 손",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "zeroDivide",
+          "name": "0으로 나누기",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "descent",
+          "name": "무한강하",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "log",
+          "name": "로그의 축소렌즈",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "exponential",
+          "name": "발산하는 심장",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "integral",
+          "name": "르베그의 측도",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-8.png",
+      "elapsedSeconds": 67.14,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "normal",
+          "name": "법선의 쐐기",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "fault",
+          "name": "불연속의 단층",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "dice",
+          "name": "독립시행의 무정한 주사위",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "coin",
+          "name": "베르누이의 동전",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "bayes",
+          "name": "베이즈의 조건부확률",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "gauss",
+          "name": "가우스의 소거법",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "euler",
+          "name": "오일러의 일곱 다리",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "voronoi",
+          "name": "보로노이의 영토",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "menger",
+          "name": "멩거의 스펀지",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "hanoi",
+          "name": "하노이의 탑",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-9.png",
+      "elapsedSeconds": 75.906,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "koch",
+          "name": "코흐의 눈송이",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "mandelbrot",
+          "name": "만델브로의 심연",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "banach",
+          "name": "바나흐–타르스키의 역설",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "demorgan",
+          "name": "드모르간의 반전 인장",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "contradiction",
+          "name": "귀류법의 모순 감옥",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "golden",
+          "name": "황금비의 나선",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "discriminant",
+          "name": "판별식의 심판",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "conjugate",
+          "name": "켤레의 쌍검",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "limit",
+          "name": "도달할 수 없는 극한",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "qed",
+          "name": "증명 종료",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-10.png",
+      "elapsedSeconds": 83.937,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "hydra",
+          "name": "굿스타인의 히드라",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "beaver",
+          "name": "라도의 바쁜 비버",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "glider",
+          "name": "콘웨이의 글라이더",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "flexagon",
+          "name": "가드너의 육각접이",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "penroseknight",
+          "name": "펜로즈의 기사",
+          "column": 0,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-11.png",
+      "elapsedSeconds": 86.719,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "shannon",
+          "name": "섀넌의 전령",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "huygens",
+          "name": "하위헌스의 시계지기",
+          "column": 4,
+          "row": 0
+        }
+      ]
+    },
+    {
+      "file": "sheet-12.png",
+      "elapsedSeconds": 81.797,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "hilbertsnake",
+          "name": "힐베르트의 뱀",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "peano",
+          "name": "페아노의 용",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "hornedsphere",
+          "name": "알렉산더의 뿔 달린 구",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "boysurface",
+          "name": "보이의 해파리",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "escher",
+          "name": "에셔의 보행자",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "brouwer",
+          "name": "브라우어르의 개구리",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "antipodes",
+          "name": "보르수크의 쌍둥이",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-13.png",
+      "elapsedSeconds": 77.203,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "mersenneguard",
+          "name": "메르센의 용병",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "perfectsix",
+          "name": "완전수의 수호상",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "amicable",
+          "name": "우애수의 동반자",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "bernoulliclerk",
+          "name": "베르누이의 장부지기",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "hamiltonchariot",
+          "name": "해밀턴의 순회전차",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "undecidable",
+          "name": "괴델의 심문관",
+          "column": 3,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-14.png",
+      "elapsedSeconds": 79.203,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "abelsilence",
+          "name": "순열의 정렬",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "interpolation",
+          "name": "라그랑주의 보간",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "gradient",
+          "name": "경사하강",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "separation",
+          "name": "분리공리",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "finitecover",
+          "name": "하이네의 덮개",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "compactvault",
+          "name": "콤팩트성의 금고",
+          "column": 2,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-15.png",
+      "elapsedSeconds": 84.656,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "stokes",
+          "name": "스토크스의 경계",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "greenfield",
+          "name": "여집합의 소환",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "divergence",
+          "name": "쌍곡선의 불변량",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "normalization",
+          "name": "서로소의 정규화",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "nullspace",
+          "name": "영공간",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "determinant",
+          "name": "행렬식의 붕괴",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "fouriersplit",
+          "name": "푸리에의 영주파수",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "laplacetransform",
+          "name": "함수의 평행이동",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "mobiusinverse",
+          "name": "뫼비우스의 반전",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-16.png",
+      "elapsedSeconds": 81.141,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "bezout",
+          "name": "베주의 항등식",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "wilson",
+          "name": "윌슨의 계승",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "littlefermat",
+          "name": "페르마의 작은 정리",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "centralLimit",
+          "name": "산술평균",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "martingale",
+          "name": "마팅게일의 장부",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "minimax",
+          "name": "폰 노이만의 미니맥스",
+          "column": 2,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-17.png",
+      "elapsedSeconds": 79.703,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "transfinite",
+          "name": "역순의 귀환",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "fourcolorblade",
+          "name": "하켄의 사색검",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "thalesruler",
+          "name": "탈레스의 직각자",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "euclidcompass",
+          "name": "유클리드의 컴퍼스",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "descartesaxes",
+          "name": "데카르트의 좌표축",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "riemannsurface",
+          "name": "리만의 곡면",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "exhaustionroom",
+          "name": "에우독소스의 소진실",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "alexandrialibrary",
+          "name": "알렉산드리아의 서고",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "platoacademy",
+          "name": "플라톤의 아카데미",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-18.png",
+      "elapsedSeconds": 165.421,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "church",
+          "name": "고트프리트 라이프니츠",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "bridgekeeper",
+          "name": "아이작 뉴턴",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "cauchywisp",
+          "name": "오귀스탱 코시",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "saddlerider",
+          "name": "조제프 루이 라그랑주",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "marginscribe",
+          "name": "피에르 드 페르마",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "erdosguest",
+          "name": "레온하르트 오일러",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "newtonstep",
+          "name": "뉴턴의 미분법",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "residue",
+          "name": "정적분",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "stirling",
+          "name": "스털링의 근사",
+          "column": 4,
+          "row": 1
+        },
+        {
+          "id": "liouville",
+          "name": "라이프니츠의 적분",
+          "column": 3,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-19.png",
+      "elapsedSeconds": 147.828,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "tarski",
+          "name": "알프레트 타르스키",
+          "column": 4,
+          "row": 1
+        },
+        {
+          "id": "formalism",
+          "name": "다비트 힐베르트",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "halting",
+          "name": "앨런 튜링",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "lovelace",
+          "name": "에이다 러브레이스",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "younggauss",
+          "name": "카를 프리드리히 가우스",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "germain",
+          "name": "소피 제르맹",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "kovalevskaya",
+          "name": "소피야 코발렙스카야",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "conservation",
+          "name": "에미 뇌터",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "ordinal",
+          "name": "게오르크 칸토어",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "cutkeeper",
+          "name": "유클리드",
+          "column": 2,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-20.png",
+      "elapsedSeconds": 85.25,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "ackermann",
+          "name": "빌헬름 아커만",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "frege",
+          "name": "고틀로프 프레게",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "hamming",
+          "name": "리처드 해밍",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "homotopy",
+          "name": "앙리 푸앵카레",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "galoiscorrespondence",
+          "name": "갈루아의 순환치환",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "lhopital",
+          "name": "유클리드의 호제법",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "eigenvalue",
+          "name": "고유값의 추출",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "remainderseal",
+          "name": "중국인의 나머지 정리",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "binomial",
+          "name": "이항정리",
+          "column": 4,
+          "row": 1
+        },
+        {
+          "id": "knutharrows",
+          "name": "함수의 합성",
+          "column": 2,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-21.png",
+      "elapsedSeconds": 66.391,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "pythagoras-person",
+          "name": "피타고라스",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "archimedes-person",
+          "name": "아르키메데스",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "fibonacci-person",
+          "name": "레오나르도 피보나치",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "pascal-person",
+          "name": "블레즈 파스칼",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "descartes-person",
+          "name": "르네 데카르트",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "bernoulli-person",
+          "name": "야코프 베르누이",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "bayes-person",
+          "name": "토머스 베이즈",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "ramanujan-person",
+          "name": "스리니바사 라마누잔",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "hypatia-person",
+          "name": "히파티아",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "khwarizmi-person",
+          "name": "알콰리즈미",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-22.png",
+      "elapsedSeconds": 82.578,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "discovery",
+          "name": "선택공리의 서랍",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "dilemma",
+          "name": "몬티 홀의 선택",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "counterexample",
+          "name": "단 하나의 반례",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "ambush",
+          "name": "페르마의 숨긴 증명",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "observatory",
+          "name": "가우스의 천문대",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "razor",
+          "name": "오컴의 면도날",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "rust",
+          "name": "유클리드의 녹",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "achilles",
+          "name": "제논의 아킬레우스",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "doubleblade",
+          "name": "켤레의 검사",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "hiddenroot",
+          "name": "숨어 있는 근",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-23.png",
+      "elapsedSeconds": 83.031,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "phoenix",
+          "name": "푸앵카레의 불사조",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "leecher",
+          "name": "르베그의 수집가",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "amplifier",
+          "name": "푸리에의 증폭기",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "freeze",
+          "name": "제논의 멈춘 화살",
+          "column": 3,
+          "row": 0
+        },
+        {
+          "id": "surge",
+          "name": "순간변화율",
+          "column": 4,
+          "row": 0
+        },
+        {
+          "id": "choir",
+          "name": "메르센의 합창단",
+          "column": 0,
+          "row": 1
+        },
+        {
+          "id": "proofquest",
+          "name": "미완성의 증명",
+          "column": 1,
+          "row": 1
+        },
+        {
+          "id": "eulerhero",
+          "name": "돌아온 오일러",
+          "column": 2,
+          "row": 1
+        },
+        {
+          "id": "euclidgift",
+          "name": "유클리드의 공준",
+          "column": 3,
+          "row": 1
+        },
+        {
+          "id": "archimedesgift",
+          "name": "아르키메데스의 지렛대",
+          "column": 4,
+          "row": 1
+        }
+      ]
+    },
+    {
+      "file": "sheet-24.png",
+      "elapsedSeconds": 65.937,
+      "authSource": "codex-login",
+      "cards": [
+        {
+          "id": "input-forward",
+          "name": "변수의 전진",
+          "column": 0,
+          "row": 0
+        },
+        {
+          "id": "input-back",
+          "name": "변수의 역행",
+          "column": 1,
+          "row": 0
+        },
+        {
+          "id": "compose-left",
+          "name": "합성함수의 고리",
+          "column": 2,
+          "row": 0
+        },
+        {
+          "id": "split-constant",
+          "name": "상수항의 탈출",
+          "column": 3,
+          "row": 0
+        }
+      ]
+    }
+  ],
+  "board": {
+    "file": "board.png",
+    "provider": "codex",
+    "generator": "aldegad/sprite-gen 4.0.0",
+    "report": "art-work/board-report.json",
+    "prompt": "art-work/board-prompt.txt",
+    "purpose": "static board scenery; all cards, heroes, counters and controls rendered separately"
+  },
+  "heroes": {
+    "file": "heroes.png",
+    "layout": "3 equal columns, one row",
+    "ids": [
+      "euclid",
+      "leibniz",
+      "archimedes"
+    ],
+    "provider": "codex",
+    "generator": "aldegad/sprite-gen 4.0.0",
+    "report": "art-work/heroes-report.json",
+    "prompt": "art-work/heroes-prompt.txt"
+  },
+  "screens": [
+    {
+      "file": "menu-chest.png",
+      "provider": "codex",
+      "generator": "aldegad/sprite-gen 4.0.0",
+      "report": "art-work/hub-report.json",
+      "prompt": "art-work/hub-prompt.txt",
+      "purpose": "Decorative environment only; interactive content is rendered from game state."
+    },
+    {
+      "file": "collection-book.png",
+      "provider": "codex",
+      "generator": "aldegad/sprite-gen 4.0.0",
+      "report": "art-work/book-report.json",
+      "prompt": "art-work/book-prompt.txt",
+      "purpose": "Decorative environment only; interactive content is rendered from game state."
+    },
+    {
+      "file": "deck-room.png",
+      "provider": "codex",
+      "generator": "aldegad/sprite-gen 4.0.0",
+      "report": "art-work/setup-report.json",
+      "prompt": "art-work/setup-prompt.txt",
+      "purpose": "Decorative environment only; interactive content is rendered from game state."
+    }
+  ],
+  "journal": {
+    "file": "journal-icons.png",
+    "layout": "4 columns × 2 rows",
+    "ids": [
+      "play",
+      "win",
+      "pack",
+      "first-win",
+      "ten-games",
+      "five-packs",
+      "twenty-spells",
+      "first-craft"
+    ],
+    "report": "art-work/journal-icons-report.json",
+    "provider": "codex"
+  }
+}
