@@ -1491,8 +1491,9 @@
       "file": "menu-chest.png",
       "provider": "codex",
       "generator": "aldegad/sprite-gen 4.0.0",
-      "report": "art-work/hub-report.json",
-      "prompt": "art-work/hub-prompt.txt",
+      "report": "art-work/menu-revision-report.json",
+      "prompt": "art-work/menu-revision-prompt.txt",
+      "revisedOn": "2026-11-09",
       "purpose": "Decorative environment only; interactive content is rendered from game state."
     },
     {
