@@ -6,14 +6,11 @@ dialog:has(.choice-cards) h2,dialog:has(.mulligan-cards) h2{text-shadow:0 3px 4p
 .hub-stage,.book-stage{min-height:100dvh;display:flex;align-items:center;justify-content:center;background:radial-gradient(#24232c,#100d0a)}
 .hub-chest{--hub-brass:#8c683d;--hub-highlight:#c8ac76;--hub-ink:#39291c;container-type:inline-size;position:relative;width:min(100vw,150dvh);aspect-ratio:3/2;background:url('/public/art/menu-chest.png') center/100% 100%;box-shadow:0 0 60px #000}
 .hub-chest h1{position:absolute;left:35%;right:35%;top:9%;height:5.5%;display:grid;place-items:center;font:900 2.7cqw var(--display);letter-spacing:.12cqw;text-align:center;color:#d3b88a;text-shadow:0 .15cqw .1cqw #261509,0 -.1cqw #f0dab333}
-.hub-actions{position:absolute;left:34%;right:34%;top:27%;height:33%;display:flex;flex-direction:column;gap:.7cqw}
-.hub-actions button{position:relative;isolation:isolate;flex:1;min-height:0;border:0;border-radius:0;background:none;box-shadow:none;font:900 2.4cqw/1 var(--display);color:var(--hub-ink);text-shadow:0 1px #f3e6c9;padding:.3cqw 2cqw;letter-spacing:0;filter:drop-shadow(0 .4cqw .2cqw #130a07)}
-.hub-actions button:before,.hub-actions button:after{content:'';position:absolute;z-index:-1;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);pointer-events:none}
-.hub-actions button:before{inset:0;background:linear-gradient(#cbb082 0%,#7b5835 18%,#37251b 25%,#39271b 78%,#9f7d4b 86%,#d0b783 100%)}
-.hub-actions button:after{inset:.8cqw 1.2cqw .65cqw;background:linear-gradient(#f1dfb9,#d6c29d 45%,#bea57b);box-shadow:inset 0 .2cqw .15cqw #fff0ca,inset 0 -.25cqw .2cqw #7c603d}
-.hub-actions button:first-child{margin-inline:2.1cqw}.hub-actions button:last-child{margin-inline:.6cqw}.hub-actions button:nth-child(n+3):before,.hub-actions button:nth-child(n+3):after{clip-path:polygon(0 0,100% 0,93% 100%,7% 100%)}
-.hub-actions button:hover,.hub-actions button:focus-visible{filter:brightness(1.13) drop-shadow(0 .4cqw .2cqw #130a07)}.hub-actions button:focus-visible{outline:2px solid #f2dfb0;outline-offset:4px}.hub-actions button:active{transform:translateY(.15cqw)}
-.hub-plaque{position:absolute;top:83%;height:10%;background:transparent;color:var(--hub-ink);text-shadow:0 .1cqw #f3dfbb;font:900 2.3cqw var(--display);padding:0}.hub-plaque.left{left:30%;width:19%}.hub-plaque.right{left:51%;width:22%}.hub-plaque:hover{color:#74532b;text-shadow:0 0 .7cqw #fff1bc}
+.hub-actions{position:absolute;left:36%;right:36%;top:28%;height:31%;display:flex;flex-direction:column;gap:1.15cqw}
+.hub-actions button{position:relative;flex:1;min-height:0;display:grid;place-items:center;border:.22cqw solid #71563b;border-radius:.65cqw;background:linear-gradient(100deg,#b6a387,#d0c0a5 36%,#c6b499 70%,#ae997a);box-shadow:inset 0 1px #ebddc5,inset 0 -2px #887355,0 .25cqw 0 #48311f,0 .4cqw .5cqw #170e0a9c;font:900 2.1cqw/1 var(--display);color:var(--hub-ink);text-shadow:0 1px #e7d7b9;padding:0 1cqw;letter-spacing:0;transition:filter .12s,transform .12s}
+.hub-actions button:first-child,.hub-actions button:last-child{margin-inline:1.1cqw}
+.hub-actions button:hover,.hub-actions button:focus-visible{filter:brightness(1.12)}.hub-actions button:focus-visible{outline:2px solid #f2dfb0;outline-offset:4px}.hub-actions button:active{transform:translateY(.15cqw)}
+.hub-plaque{position:absolute;top:83%;height:10%;background:transparent;color:var(--hub-ink);text-shadow:0 .1cqw #f3dfbb;font:900 2.1cqw var(--display);padding:0}.hub-plaque.left{left:27%;width:22%}.hub-plaque.right{left:51%;width:22%}.hub-plaque:hover{color:#74532b;text-shadow:0 0 .7cqw #fff1bc}
 .room-heading h1,.deck-box b,.hero-stand h2,.gold-button,.outline-button,.saved-deck h2,
 .card-rules b{font-weight:900}.minion .stat,.hero-health,.cost{font-family:'HS Belwe',Georgia,serif}
 body[data-view=setup]{background:#17100c}body[data-view=setup]:before{display:none}
